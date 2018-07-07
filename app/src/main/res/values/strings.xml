@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">پیامک تقلبی</string>
+    <string name="phone">تلفن</string>
+    <string name="messageText">متن پیام</string>
+    <string name="timeSend">زمان ارسال :</string>
+    <string name="dateSend">تاریخ ارسال :</string>
+    <string name="contact">مخاطبین</string>
+    <string name="reset">ریست</string>
+    <string name="time">time</string>
+    <string name="date">Date</string>
+    <string name="Sendtext">مخاطب</string>
+    <string name="schedule">زمانبندی</string>
+    <string name="gmail">JavidDeveloper@Gmail.com</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="sendEmail">ارسال ایمیل</string>
+    <string name="myPanelMyket">myket://developer/com.sattar.j.smsfake</string>
+    <string name="NazarMyket">myket://comment?id=com.sattar.j.smsfake</string>
+    <string name="MyPage">https://myket.ir/developer/dev-32375/apps</string>
+    <string name="EmailSubject">ایمیل ارسالی از برنامه پیامک تقلبی</string>
+    <string name="cancelDialog">لغو</string>
+    <string name="messageEmailSend">کاربر گرامی شما میتوانید با پیشنهادات و انتقادات خود مار را یاری نمایید</string>
+    <string name="rateTitle">ثبت نظر</string>
+    <string name="rateMsg">حمایت شما با 5 ستاره</string>
+    <string name="inMykey">نظر در مایکت</string>
+    <string name="appsTitle">سایر محصولات</string>
+    <string name="appsMsg">از سایر برنامه های ما در مایکت دیدن کنید</string>
+    <string name="appsShow">تایید</string>
+</resources>
