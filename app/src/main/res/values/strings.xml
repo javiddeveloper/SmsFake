@@ -2,13 +2,13 @@
     <string name="app_name">پیامک تقلبی</string>
     <string name="phone">تلفن</string>
     <string name="messageText">متن پیام</string>
-    <string name="timeSend">زمان ارسال :</string>
-    <string name="dateSend">تاریخ ارسال :</string>
+    <string name="timeSend">زمان :</string>
+    <string name="dateSend">تاریخ :</string>
     <string name="contact">مخاطبین</string>
-    <string name="reset">ریست</string>
+    <string name="reset"> ریست</string>
     <string name="time">time</string>
     <string name="date">Date</string>
-    <string name="Sendtext">مخاطب</string>
+    <string name="Sendtext">عملیات مخاطب</string>
     <string name="schedule">زمانبندی</string>
     <string name="gmail">JavidDeveloper@Gmail.com</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -26,4 +26,5 @@
     <string name="appsTitle">سایر محصولات</string>
     <string name="appsMsg">از سایر برنامه های ما در مایکت دیدن کنید</string>
     <string name="appsShow">تایید</string>
+    <string name="danger_message">کاربر گرامی پیامک های ساخته شده توسط این برنامه برای کسی ارسال نمیشود و فقط در صندوق پیامهای شما نمایش داده میشود.</string>
 </resources>

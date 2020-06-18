@@ -1,4 +1,4 @@
-package com.sattar.j.smsfake;
+package com.sattar.j.smsfake.screens;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,8 +7,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.sattar.j.smsfake.CustomViews.CustomImageView;
-import com.sattar.j.smsfake.CustomViews.CustomTextView;
+import com.sattar.j.smsfake.R;
+import com.sattar.j.smsfake.customViews.CustomImageView;
+import com.sattar.j.smsfake.customViews.CustomTextView;
 
 public class FirstActivity extends AppCompatActivity {
     private CustomImageView background, icon;

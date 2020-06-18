@@ -1,30 +1,28 @@
-package com.sattar.j.smsfake.CustomViews;
+package com.sattar.j.smsfake.customViews;
 
 import android.content.Context;
 import android.graphics.Typeface;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatTextView;
+import androidx.appcompat.widget.AppCompatEditText;
+
 import android.util.AttributeSet;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.sattar.j.smsfake.SmsFakeApplication;
 
-public class CustomTextView extends AppCompatTextView {
+public class CustomEditText extends TextInputEditText {
 
-    public CustomTextView(Context context) {
+    public CustomEditText(Context context) {
         super(context);
         initFont(null);
     }
 
-    public CustomTextView(Context context, AttributeSet attrs) {
+    public CustomEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
         initFont(null);
     }
 
-    public CustomTextView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        initFont(null);
-    }
 
     public void initFont(@Nullable String type) {
         Typeface typeface = Typeface.createFromAsset(getContext().getAssets(), SmsFakeApplication.getFont(type));

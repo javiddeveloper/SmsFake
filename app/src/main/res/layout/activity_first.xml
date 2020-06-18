@@ -4,15 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".FirstActivity">
+    tools:context=".screens.FirstActivity">
 
-    <com.sattar.j.smsfake.CustomViews.CustomImageView
+    <com.sattar.j.smsfake.customViews.CustomImageView
         android:id="@+id/background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop" />
 
-    <com.sattar.j.smsfake.CustomViews.CustomImageView
+    <com.sattar.j.smsfake.customViews.CustomImageView
         android:id="@+id/icon"
         android:layout_width="200dp"
         android:layout_height="200dp"
@@ -23,7 +23,7 @@
         android:scaleType="centerCrop"
         android:src="@drawable/sms_icon" />
 
-    <com.sattar.j.smsfake.CustomViews.CustomTextView
+    <com.sattar.j.smsfake.customViews.CustomTextView
         android:id="@+id/appName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

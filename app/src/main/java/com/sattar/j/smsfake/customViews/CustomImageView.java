@@ -1,4 +1,4 @@
-package com.sattar.j.smsfake.CustomViews;
+package com.sattar.j.smsfake.customViews;
 
 import android.content.Context;
 import androidx.appcompat.widget.AppCompatImageView;

@@ -51,7 +51,7 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".screens.MainActivity">
 
         </activity>
 
@@ -70,6 +70,29 @@
                 <data android:scheme="mmsto" />
             </intent-filter>
         </activity>
+<!--        fire base cloud messagw-->
+        <service
+            android:name=".SmsFakeFirebaseMessagingService"
+            android:exported="false"
+            android:directBootAware="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/sms_icon" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="1" />
+
+
+
+        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
 
         <!-- Service that delivers messages from the phone "quick response" -->
         <service
@@ -88,7 +111,7 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".FirstActivity">
+        <activity android:name=".screens.FirstActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

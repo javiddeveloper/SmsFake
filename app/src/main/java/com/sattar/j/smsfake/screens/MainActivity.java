@@ -1,4 +1,4 @@
-package com.sattar.j.smsfake;
+package com.sattar.j.smsfake.screens;
 
 import android.app.Activity;
 import android.content.ContentValues;
@@ -14,10 +14,13 @@ import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.provider.ContactsContract;
 import android.provider.Telephony;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+
 import androidx.core.view.GravityCompat;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,23 +37,24 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.github.florent37.materialtextfield.MaterialTextField;
+import com.google.android.material.textfield.TextInputEditText;
 import com.infideap.drawerbehavior.Advance3DDrawerLayout;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.marcoscg.dialogsheet.DialogSheet;
-import com.sattar.j.smsfake.CustomViews.CustomEditText;
-import com.sattar.j.smsfake.CustomViews.CustomTextView;
+import com.sattar.j.smsfake.CallenderAndTime;
+import com.sattar.j.smsfake.R;
+import com.sattar.j.smsfake.customViews.CustomEditText;
+import com.sattar.j.smsfake.customViews.CustomTextView;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import co.ronash.pushe.Pushe;
 
-@RequiresApi(api = Build.VERSION_CODES.KITKAT)
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends Activity implements NavigationView.OnNavigationItemSelectedListener {
     private Context context;
     private Button addContact, reset;
-    private MaterialTextField phone;
+    private TextInputEditText phone, bodyInput;
     private FloatingActionButton send;
     private String sender, body, result = "0";
-    private CustomEditText senderInput, bodyInput;
     private CustomTextView timeTxt, dateTxt;
     private MaterialSpinner spinner;
     private SweetAlertDialog pDialog;
@@ -62,7 +66,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private boolean firstOpen = false;
     private boolean checkPermission = false;
     private String defaultSmsApp;
-    private DialogSheet dialog;
     private Advance3DDrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
     private Toolbar toolbar;
@@ -121,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onClick(View v) {
                 setDefaultSmsApp();
                 if (checkPermission) {
-                    sender = senderInput.getText().toString();
+                    sender = phone.getText().toString();
                     body = bodyInput.getText().toString();
                     sendSms(result, body, sender);
                 }
@@ -131,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                senderInput.setText("");
+                phone.setText("");
                 bodyInput.setText("");
             }
         });
@@ -139,6 +142,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onActivityResult(int reqCode, int resultCode, Intent data) {
+//        super.onActivityResult(reqCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             switch (reqCode) {
                 case RESULT_PICK_CONTACT:
@@ -172,7 +176,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             int nameIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME);
             phoneNo = cursor.getString(phoneIndex);
             name = cursor.getString(nameIndex);
-            senderInput.setText(phoneNo);
+            phone.setText(phoneNo);
             Toast.makeText(context, name + " : ارسال برای  ", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             e.printStackTrace();
@@ -188,6 +192,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 intent.putExtra(Telephony.Sms.Intents.EXTRA_PACKAGE_NAME, context.getPackageName());
                 startActivityForResult(intent, 1);
 
+            } else {
+                checkPermission = true;
             }
         }
     }
@@ -275,7 +281,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
             checkPermission = false;
         } else {
-            Intent intent = new Intent( Telephony.Sms.Intents.ACTION_CHANGE_DEFAULT);
+            Intent intent = new Intent(Telephony.Sms.Intents.ACTION_CHANGE_DEFAULT);
             intent.putExtra(Telephony.Sms.Intents.EXTRA_PACKAGE_NAME, defaultSmsApp);
             startActivity(intent);
             checkPermission = false;
@@ -305,7 +311,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private boolean checkNull() {
-        if (senderInput.getText().toString().equals("")) {
+        if (phone.getText().toString().equals("")) {
             new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
                     .setTitleText("اخطار")
                     .setContentText("شماره تماس خالی است")
@@ -317,7 +323,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void init() {
         context = this;
-        defaultSmsApp = Telephony.Sms.getDefaultSmsPackage(context);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            defaultSmsApp = Telephony.Sms.getDefaultSmsPackage(context);
+        }
         pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
         phone = findViewById(R.id.phone);
         toolbar = findViewById(R.id.toolbar);
@@ -339,8 +347,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         timeTxt = findViewById(R.id.timeTxt);
         dateTxt = findViewById(R.id.dateTxt);
         dateTxt.setText(cTime.getYear() + " / " + cTime.getMonth() + " / " + cTime.getDay());
-        senderInput = findViewById(R.id.sender);
-        bodyInput = findViewById(R.id.body);
+//        senderInput = findViewById(R.id.sender);
+        bodyInput = findViewById(R.id.message);
         spinner = findViewById(R.id.spinner);
         pDialog.setCancelable(false);
         showTime();
@@ -389,7 +397,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void timeDialog() {
-//        stopTime = true;
         LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
         View timeP = inflater.inflate(R.layout.time_picker, null);
         final TimePicker tp = timeP.findViewById(R.id.timePicker);

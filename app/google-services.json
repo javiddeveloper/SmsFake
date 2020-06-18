@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1078330692011",
+    "firebase_url": "https://smsfake-47d68.firebaseio.com",
+    "project_id": "smsfake-47d68",
+    "storage_bucket": "smsfake-47d68.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1078330692011:android:e32c08623340e5509942ee",
+        "android_client_info": {
+          "package_name": "com.sattar.j.smsfake"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1078330692011-gmndikn90f2dcsledvm6flinhff5pcgv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sattar.j.smsfake",
+            "certificate_hash": "dccdfa184a992f347e4e9acd73b2e7ef514fc5e8"
+          }
+        },
+        {
+          "client_id": "1078330692011-5i1til2hrr2u90ji21sde951jiivgume.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOWaAwtf1NA2GAKwtsoFSS5iuzwBmRAAo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1078330692011-5i1til2hrr2u90ji21sde951jiivgume.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
