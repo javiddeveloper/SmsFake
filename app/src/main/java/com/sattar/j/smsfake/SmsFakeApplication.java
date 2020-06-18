@@ -2,9 +2,11 @@ package com.sattar.j.smsfake;
 import android.app.Application;
 import android.graphics.Typeface;
 import androidx.annotation.Nullable;
+import androidx.multidex.MultiDexApplication;
+
 import com.onesignal.OneSignal;
 
-public class SmsFakeApplication extends Application {
+public class SmsFakeApplication extends MultiDexApplication {
     public static final String NORMAL_FONT = "";
     public static final String LIGHT_FONT  = "_light";
     public static final String BOLD_FONT   = "_bold";
@@ -18,6 +20,7 @@ public class SmsFakeApplication extends Application {
                 .unsubscribeWhenNotificationsAreDisabled(true)
                 .init();
     }
+
     
     public static String getFont(@Nullable String type) {
         if (type != null)

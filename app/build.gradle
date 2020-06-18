@@ -16,6 +16,7 @@ android {
         targetSdkVersion 28
         versionCode 10
         versionName "1.0.0-b"
+        multiDexEnabled true
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
     lintOptions {
@@ -23,7 +24,8 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            multiDexKeepFile file('multidex-config.txt')
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -57,8 +59,12 @@ dependencies {
 
     //** google
     implementation 'com.google.firebase:firebase-analytics:17.4.3'
-    implementation 'com.google.firebase:firebase-crashlytics:17.0.1'
-    implementation 'com.google.firebase:firebase-messaging:20.2.0'
-    implementation 'com.google.firebase:firebase-messaging-directboot:20.2.0'
+    implementation 'com.google.firebase:firebase-crashlytics:17.1.0'
+    implementation 'com.google.firebase:firebase-messaging:20.2.1'
+    implementation 'com.google.firebase:firebase-messaging-directboot:20.2.1'
+    implementation 'com.google.firebase:firebase-inappmessaging-display:19.0.7'
 
+
+    //** multi dex
+    implementation 'androidx.multidex:multidex:2.0.1'
 }

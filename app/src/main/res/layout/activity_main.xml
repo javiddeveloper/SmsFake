@@ -229,7 +229,10 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="16dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginBottom="16dp"
                         android:layout_toLeftOf="@+id/send">
 
                         <com.sattar.j.smsfake.customViews.CustomEditText
@@ -247,7 +250,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerInParent="true"
                         android:layout_gravity="center"
-                        android:layout_margin="15sp"
+                        android:layout_margin="7sp"
                         android:src="@drawable/send" />
 
                 </RelativeLayout>

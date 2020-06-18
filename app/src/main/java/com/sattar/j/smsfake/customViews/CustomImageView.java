@@ -1,10 +1,16 @@
 package com.sattar.j.smsfake.customViews;
 
 import android.content.Context;
+
 import androidx.appcompat.widget.AppCompatImageView;
+
+import android.os.Build;
 import android.util.AttributeSet;
+
 import com.bumptech.glide.Glide;
+
 import jp.wasabeef.glide.transformations.BlurTransformation;
+
 import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
 
 public class CustomImageView extends AppCompatImageView {
@@ -21,12 +27,19 @@ public class CustomImageView extends AppCompatImageView {
 
     }
 
-    public void Load(int url){
-        Glide.with(this).load(url).into(this);
+    public void Load(int url) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            setImageResource(url);
+        } else
+            Glide.with(this).load(url).into(this);
     }
-    public void LoadBlure(int url){
-        Glide.with(this).load(url)
-                .apply(bitmapTransform(new BlurTransformation(10, 5)))
-                .into((this));
+
+    public void LoadBlure(int url) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
+            setImageResource(url);
+        } else
+            Glide.with(this).load(url)
+                    .apply(bitmapTransform(new BlurTransformation(10, 5)))
+                    .into((this));
     }
 }
