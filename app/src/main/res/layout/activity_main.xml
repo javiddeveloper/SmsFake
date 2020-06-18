@@ -26,7 +26,7 @@
             android:paddingLeft="12dp"
             android:paddingRight="12dp">
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12sp"
@@ -39,7 +39,7 @@
                     android:layout_margin="5dp"
                     android:orientation="vertical">
 
-                    <com.sattar.j.smsfake.MyTextView
+                    <com.sattar.j.smsfake.CustomViews.CustomTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="12sp"
@@ -70,7 +70,7 @@
                         app:mtf_image="@android:drawable/ic_menu_call"
                         app:mtf_labelColor="@color/colorPrimary">
 
-                        <com.sattar.j.smsfake.MyEditText
+                        <com.sattar.j.smsfake.CustomViews.CustomEditText
                             android:id="@+id/sender"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -86,9 +86,9 @@
 
 
                 </LinearLayout>
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
@@ -100,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <com.sattar.j.smsfake.MyTextView
+                    <com.sattar.j.smsfake.CustomViews.CustomTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12sp"
@@ -121,7 +121,7 @@
                         android:orientation="horizontal"
                         android:weightSum="2">
 
-                        <com.sattar.j.smsfake.MyTextView
+                        <com.sattar.j.smsfake.CustomViews.CustomTextView
                             android:id="@+id/timeTxt"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -131,7 +131,7 @@
                             android:textColor="@color/timeColor"
                             android:textSize="19dp" />
 
-                        <com.sattar.j.smsfake.MyTextView
+                        <com.sattar.j.smsfake.CustomViews.CustomTextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="0.5"
@@ -152,7 +152,7 @@
                         android:orientation="horizontal"
                         android:weightSum="2">
 
-                        <com.sattar.j.smsfake.MyTextView
+                        <com.sattar.j.smsfake.CustomViews.CustomTextView
                             android:id="@+id/dateTxt"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -162,7 +162,7 @@
                             android:textColor="@color/timeColor"
                             android:textSize="19dp" />
 
-                        <com.sattar.j.smsfake.MyTextView
+                        <com.sattar.j.smsfake.CustomViews.CustomTextView
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="0.5"
@@ -172,9 +172,9 @@
 
 
                 </LinearLayout>
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
@@ -207,9 +207,9 @@
                         android:layout_marginEnd="75dp"
                         android:text="@string/reset" />
                 </RelativeLayout>
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
@@ -222,16 +222,16 @@
                     android:layout_margin="12sp"
                     android:orientation="horizontal">
 
-                    <com.sattar.j.smsfake.MyTextView
+                    <com.sattar.j.smsfake.CustomViews.CustomTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:elevation="15sp"
                         android:gravity="center"
                         android:text="کاربر گرامی پیامک های ساخته شده توسط این برنامه برای کسی ارسال نمیشود و فقط در صندوق پیامهای شما نمایش داده میشود." />
                 </RelativeLayout>
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-            <android.support.v7.widget.CardView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
                 android:layout_marginBottom="12sp"
@@ -258,7 +258,7 @@
                         app:mtf_image="@android:drawable/ic_dialog_email"
                         app:mtf_labelColor="@color/colorPrimary">
 
-                        <com.sattar.j.smsfake.MyEditText
+                        <com.sattar.j.smsfake.CustomViews.CustomEditText
                             android:id="@+id/body"
                             android:layout_width="match_parent"
                             android:layout_height="80dp"
@@ -270,7 +270,7 @@
 
                     </com.github.florent37.materialtextfield.MaterialTextField>
 
-                    <android.support.design.widget.FloatingActionButton
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
                         android:id="@+id/send"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
@@ -280,7 +280,7 @@
 
                 </LinearLayout>
 
-            </android.support.v7.widget.CardView>
+            </androidx.cardview.widget.CardView>
         </LinearLayout>
 
     </ScrollView>
