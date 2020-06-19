@@ -1,12 +1,13 @@
 package com.sattar.j.smsfake;
 import android.app.Application;
+import android.content.Context;
 import android.graphics.Typeface;
 import androidx.annotation.Nullable;
+import androidx.multidex.MultiDex;
 import androidx.multidex.MultiDexApplication;
 
-import com.onesignal.OneSignal;
 
-public class SmsFakeApplication extends MultiDexApplication {
+public class SmsFakeApplication extends Application {
     public static final String NORMAL_FONT = "";
     public static final String LIGHT_FONT  = "_light";
     public static final String BOLD_FONT   = "_bold";
@@ -15,13 +16,15 @@ public class SmsFakeApplication extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        OneSignal.startInit(this)
-                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
-                .unsubscribeWhenNotificationsAreDisabled(true)
-                .init();
     }
 
-    
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+
+    }
+
     public static String getFont(@Nullable String type) {
         if (type != null)
             switch (type) {

@@ -4,8 +4,7 @@
     <color name="colorPrimaryDark">#009900</color>
     <color name="colorAccent">#33a3d6</color>
     <color name="colorBackground">#f8f9f9</color>
-    <color name="wuthe">#ffffff</color>
+    <color name="white">#ffffff</color>
     <color name="timeColor">#cf0505</color>
     <color name="lineColor">#c0c0c0</color>
-    <color name="colorWhite">#ffffff</color>
 </resources>

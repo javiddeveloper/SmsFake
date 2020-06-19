@@ -36,7 +36,6 @@
         android:textSize="35sp" />
 
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animation"
         android:layout_width="100dp"
         android:layout_marginTop="15sp"
         android:layout_height="100dp"

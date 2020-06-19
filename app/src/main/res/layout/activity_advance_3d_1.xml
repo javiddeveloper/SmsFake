@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.infideap.drawerbehavior.Advance3DDrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.infideap.drawerbehavior.AdvanceDrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:background="@color/colorPrimary"
+    android:background="@color/colorBackground"
     tools:openDrawer="start">
 
     <include
@@ -20,10 +20,10 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
-        android:background="@color/colorPrimary"
+        android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
+        android:background="@color/colorBackground"
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/activity_main_drawer" />
 
 
-</com.infideap.drawerbehavior.Advance3DDrawerLayout>
+</com.infideap.drawerbehavior.AdvanceDrawerLayout>

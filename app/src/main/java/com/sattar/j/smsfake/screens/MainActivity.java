@@ -33,12 +33,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.github.florent37.materialtextfield.MaterialTextField;
+//import com.github.florent37.materialtextfield.MaterialTextField;
 import com.google.android.material.textfield.TextInputEditText;
 import com.infideap.drawerbehavior.Advance3DDrawerLayout;
+import com.infideap.drawerbehavior.AdvanceDrawerLayout;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.marcoscg.dialogsheet.DialogSheet;
 import com.sattar.j.smsfake.CallenderAndTime;
@@ -47,7 +49,6 @@ import com.sattar.j.smsfake.customViews.CustomEditText;
 import com.sattar.j.smsfake.customViews.CustomTextView;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
-import co.ronash.pushe.Pushe;
 
 public class MainActivity extends Activity implements NavigationView.OnNavigationItemSelectedListener {
     private Context context;
@@ -66,7 +67,7 @@ public class MainActivity extends Activity implements NavigationView.OnNavigatio
     private boolean firstOpen = false;
     private boolean checkPermission = false;
     private String defaultSmsApp;
-    private Advance3DDrawerLayout drawer;
+    private AdvanceDrawerLayout drawer;
     private ActionBarDrawerToggle toggle;
     private Toolbar toolbar;
     private NavigationView navigationView;
@@ -142,7 +143,7 @@ public class MainActivity extends Activity implements NavigationView.OnNavigatio
 
     @Override
     public void onActivityResult(int reqCode, int resultCode, Intent data) {
-//        super.onActivityResult(reqCode, resultCode, data);
+        super.onActivityResult(reqCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             switch (reqCode) {
                 case RESULT_PICK_CONTACT:
@@ -336,10 +337,9 @@ public class MainActivity extends Activity implements NavigationView.OnNavigatio
         drawer.addDrawerListener(toggle);
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        drawer.setViewScale(Gravity.START, 0.96f);
-        drawer.setRadius(Gravity.START, 20);
+        drawer.setViewScale(Gravity.START, 0.85f);
+        drawer.setRadius(Gravity.START, 35);
         drawer.setViewElevation(Gravity.START, 8);
-        drawer.setViewRotation(Gravity.START, 15);
         toggle.syncState();
         send = findViewById(R.id.send);
         addContact = findViewById(R.id.addContact);
@@ -353,24 +353,8 @@ public class MainActivity extends Activity implements NavigationView.OnNavigatio
         pDialog.setCancelable(false);
         showTime();
         showMsg();
-        Pushe.initialize(this, true);
-        pushNotification();
     }
 
-    private void pushNotification() {
-        Pushe.createNotificationChannel(
-                context,
-                "hello", //channelId شناسه کانال
-                "all news channel", //نام کانال
-                "", //description: توضیحی درباره کانال
-                4, //importance: عددی از ۰ تا ۵ که ۵ حداکثر اهمیت را نشان می دهد
-                true, //enableLight
-                true, //enableViberation
-                true, //showBadge
-                Color.BLUE, //led
-                new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400} // تعیین حالت ویبره - nullable
-        );
-    }
 
     private void showMsg() {
 

@@ -18,10 +18,9 @@
 
     <com.sattar.j.smsfake.customViews.CustomTextView
         android:id="@+id/title"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
         android:layout_marginTop="15dp"
         android:layout_toRightOf="@id/imageView"
         android:gravity="center"
@@ -30,13 +29,13 @@
         android:textSize="17sp" />
 
     <com.sattar.j.smsfake.customViews.CustomTextView
-        android:id="@+id/textView"
+        android:id="@+id/txt_version"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/title"
         android:textSize="10sp"
+        android:text="@string/versionName"
         android:gravity="center"
-        android:layout_toRightOf="@id/imageView"
-        android:text="@string/gmail" />
+        android:layout_toRightOf="@id/imageView"/>
 
 </RelativeLayout>
