@@ -6,19 +6,9 @@
     <uses-permission android:name="android.permission.WRITE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-
-    <!--    <uses-sdk tools:overrideLibrary="co.ronash.pushe" />-->
-    <!--    <permission-->
-    <!--        android:name="com.sattar.j.smsfake.permission.C2D_MESSAGE"-->
-    <!--        android:protectionLevel="signature" />-->
-
-    <!--    <uses-permission android:name="com.sattar.j.smsfake.permission.C2D_MESSAGE" />-->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-    <!-- Optional permissions -->
     <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
 
     <application
         android:name=".SmsFakeApplication"
@@ -30,7 +20,6 @@
         android:theme="@style/AppTheme"
         tools:replace="android:supportsRtl,android:icon">
 
-
         <!-- BroadcastReceiver that listens for incoming SMS messages -->
         <receiver
             android:name=".SmsReceiver"
@@ -38,9 +27,7 @@
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_DELIVER" />
             </intent-filter>
-        </receiver>
-
-        <!-- BroadcastReceiver that listens for incoming MMS messages -->
+        </receiver> <!-- BroadcastReceiver that listens for incoming MMS messages -->
         <receiver
             android:name=".MmsReceiver"
             android:permission="android.permission.BROADCAST_WAP_PUSH">
@@ -51,13 +38,14 @@
             </intent-filter>
         </receiver>
 
-        <activity
-            android:name=".screens.MainActivity"
+        <activity android:name=".view.NavActivity"
             android:screenOrientation="portrait">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
-        <!-- Activity that allows the user to send new SMS/MMS messages -->
         <activity android:name=".ComposeSmsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
@@ -71,8 +59,7 @@
                 <data android:scheme="mms" />
                 <data android:scheme="mmsto" />
             </intent-filter>
-        </activity>
-        <!--        fire base cloud messagw-->
+        </activity> <!-- fire base cloud messagw -->
         <service
             android:name=".SmsFakeFirebaseMessagingService"
             android:directBootAware="true"
@@ -88,12 +75,9 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="1" />
-
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
-            android:resource="@color/colorAccent" />
-
-        <!-- Service that delivers messages from the phone "quick response" -->
+            android:resource="@color/colorAccent" /> <!-- Service that delivers messages from the phone "quick response" -->
         <service
             android:name=".HeadlessSmsSendService"
             android:exported="true"
@@ -109,16 +93,6 @@
                 <data android:scheme="mmsto" />
             </intent-filter>
         </service>
-
-        <activity
-            android:name=".screens.FirstActivity"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
     </application>
 
 </manifest>

@@ -6,7 +6,7 @@
     android:layout_marginTop="35dp"
     android:padding="22dp">
 
-    <com.sattar.j.smsfake.customViews.CustomImageView
+    <com.sattar.j.smsfake.tools.customViews.CustomImageView
         android:id="@+id/imageView"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -16,7 +16,7 @@
         android:layout_alignParentTop="true"
         app:srcCompat="@drawable/sms_icon" />
 
-    <com.sattar.j.smsfake.customViews.CustomTextView
+    <com.sattar.j.smsfake.tools.customViews.CustomTextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="17sp" />
 
-    <com.sattar.j.smsfake.customViews.CustomTextView
+    <com.sattar.j.smsfake.tools.customViews.CustomTextView
         android:id="@+id/txt_version"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -1,18 +1,19 @@
 package com.sattar.j.smsfake;
+
 import android.app.Application;
 import android.content.Context;
-import android.graphics.Typeface;
+
 import androidx.annotation.Nullable;
 import androidx.multidex.MultiDex;
-import androidx.multidex.MultiDexApplication;
 
 
 public class SmsFakeApplication extends Application {
-    public static final String NORMAL_FONT = "";
-    public static final String LIGHT_FONT  = "_light";
-    public static final String BOLD_FONT   = "_bold";
-    public static final String MEDIUM_FONT = "_medium";
-    
+    public static final int NORMAL_FONT = 0;
+    public static final int BOLD_FONT = 1;
+    public static final int MEDIUM_FONT = 2;
+    public static final int LIGHT_FONT = 3;
+    public static final int ULTRA_LIGHT_FONT = 4;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -25,14 +26,18 @@ public class SmsFakeApplication extends Application {
 
     }
 
-    public static String getFont(@Nullable String type) {
-        if (type != null)
-            switch (type) {
-                case SmsFakeApplication.NORMAL_FONT :return  "font/shabnam" + SmsFakeApplication.NORMAL_FONT + ".ttf";
-                case SmsFakeApplication.LIGHT_FONT  :return  "font/shabnam" + SmsFakeApplication.LIGHT_FONT  + ".ttf";
-                case SmsFakeApplication.BOLD_FONT   :return  "font/shabnam" + SmsFakeApplication.BOLD_FONT   + ".ttf";
-                case SmsFakeApplication.MEDIUM_FONT :return  "font/shabnam" + SmsFakeApplication.MEDIUM_FONT + ".ttf";
-            }
-        return  "font/shabnam" + SmsFakeApplication.NORMAL_FONT + ".ttf";
+    public static String getFont(int type) {
+        switch (type) {
+            case SmsFakeApplication.LIGHT_FONT:
+                return "font/IRANSansLight.ttf";
+            case SmsFakeApplication.BOLD_FONT:
+                return "font/IRANSansBold.ttf";
+            case SmsFakeApplication.MEDIUM_FONT:
+                return "font/IRANSansMedium.ttf";
+            case SmsFakeApplication.ULTRA_LIGHT_FONT:
+                return "font/IRANSansUltraLight.ttf";
+            default:
+                return "font/IRANSans.ttf";
+        }
     }
 }

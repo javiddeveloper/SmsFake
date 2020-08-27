@@ -1,4 +1,4 @@
-package com.sattar.j.smsfake.customViews;
+package com.sattar.j.smsfake.tools.customViews;
 
 import android.content.Context;
 

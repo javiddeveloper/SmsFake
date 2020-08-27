@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".screens.FirstActivity">
+    tools:context=".view.navigations.SplashFragment">
 
-    <com.sattar.j.smsfake.customViews.CustomImageView
+    <com.sattar.j.smsfake.tools.customViews.CustomImageView
         android:id="@+id/background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop" />
 
-    <com.sattar.j.smsfake.customViews.CustomImageView
+    <com.sattar.j.smsfake.tools.customViews.CustomImageView
         android:id="@+id/icon"
         android:layout_width="200dp"
         android:layout_height="200dp"
@@ -23,26 +26,26 @@
         android:scaleType="centerCrop"
         android:src="@drawable/sms_icon" />
 
-    <com.sattar.j.smsfake.customViews.CustomTextView
+    <com.sattar.j.smsfake.tools.customViews.CustomTextView
         android:id="@+id/appName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/icon"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15sp"
-        android:elevation="15sp"
-        android:text="پیامک تفلبی"
-        android:textColor="#dbdbdb"
+        android:text="@string/app_name"
+        android:textColor="@color/text_color"
         android:textSize="35sp" />
 
     <com.airbnb.lottie.LottieAnimationView
-        android:layout_width="100dp"
+        android:layout_width="50dp"
         android:layout_marginTop="15sp"
-        android:layout_height="100dp"
-        android:layout_below="@+id/appName"
-        android:layout_centerHorizontal="true"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="26dp"
+        android:layout_alignParentBottom="true"
         app:lottie_autoPlay="true"
-        app:lottie_fileName="lottie/anim.json"
+        app:lottie_fileName="lottie/loading.json"
         app:lottie_loop="true" />
 
-</RelativeLayout>
+</RelativeLayout></layout>
