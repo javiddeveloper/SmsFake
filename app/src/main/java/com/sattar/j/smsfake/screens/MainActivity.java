@@ -496,9 +496,10 @@ public class MainActivity extends Activity implements NavigationView.OnNavigatio
     void alertAbout(final int prosecc, int title, int message, int activeBtn, int positiveBtn) {
 //
         try {
-            final DialogSheet dialogSheet = new DialogSheet(this);
+            final DialogSheet dialogSheet = new DialogSheet(this,true);
             dialogSheet.setTitle(title);
             dialogSheet.setMessage(message);
+            dialogSheet.setRoundedCorners(true);
             dialogSheet.setCancelable(true);
             dialogSheet.setPositiveButton(activeBtn, new DialogSheet.OnPositiveClickListener() {
                 @Override
