@@ -11,11 +11,17 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.sattar.j.smsfake.R
 import com.sattar.j.smsfake.databinding.FragmentSendMessageBinding
+import org.koin.android.ext.android.get
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.Koin
+import org.koin.core.context.KoinContextHandler.get
 
 class SendMessageFragment : Fragment() {
     lateinit var mBinding: FragmentSendMessageBinding
-     private val sendMessageVM :SendMessageVM by viewModel()
+//     private val sendMessageVM : SendMessageVM by viewModel()
+//     private val sendMessageVM = get<SendMessageVM>()
+     private val sendMessageVM by inject<SendMessageVM>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {

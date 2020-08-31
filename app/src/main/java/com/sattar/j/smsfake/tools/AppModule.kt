@@ -18,7 +18,7 @@ val repository = module {
     factory<DestinationRepository> { DestinationRepositoryImpl(androidApplication(), get()) }
 }
 val viewModels = module {
-    viewModel { SendMessageVM(get(), get()) }
+    viewModel { SendMessageVM(get(),get()) }
 }
 val db = module {
     single { AppDataBase }
