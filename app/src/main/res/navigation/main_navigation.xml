@@ -9,10 +9,12 @@
         android:label="SplashFragment" >
         <action
             android:id="@+id/action_splashFragment_to_sendMessageFragment"
-            app:destination="@id/sendMessageFragment" />
+            app:destination="@id/sendMessageFragment"
+            app:popUpTo="@id/main_navigation"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/sendMessageFragment"
-        android:name="com.sattar.j.smsfake.view.navigations.SendMessageFragment"
+        android:name="com.sattar.j.smsfake.view.navigations.sendMessage.SendMessageFragment"
         android:label="SendMessageFragment" />
 </navigation>
