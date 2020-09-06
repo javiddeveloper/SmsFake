@@ -12,10 +12,10 @@ import io.reactivex.Observable
 @Dao
 interface TodoDao {
 
-    @Query("SELECT * FROM userNumber order by id DESC")
-    fun getAllList(): Observable<List<UserMessage>>
+    @Query("SELECT * FROM userNumber")
+    fun getAllList(): List<UserMessage>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addDestination(userMessage: UserMessage)
 
     @Delete

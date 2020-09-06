@@ -15,6 +15,6 @@
     </fragment>
     <fragment
         android:id="@+id/sendMessageFragment"
-        android:name="com.sattar.j.smsfake.view.navigations.sendMessage.SendMessageFragment"
+        android:name="com.sattar.j.smsfake.view.navigations.sendMessage.sendMessage.SendMessageFragment"
         android:label="SendMessageFragment" />
 </navigation>
