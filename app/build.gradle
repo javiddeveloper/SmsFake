@@ -2,15 +2,18 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'com.google.firebase.crashlytics'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+//apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     defaultConfig {
         applicationId "com.sattar.j.smsfake"
         minSdkVersion 19
-        targetSdkVersion 28
+        targetSdkVersion 30
         versionCode 11
-        versionName "1.1.1"
+        versionName "1.2.3"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary true
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
@@ -97,6 +100,7 @@ dependencies {
     // For ViewModel
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+
     //** koin
     implementation "org.koin:koin-core:$koin_version"
     implementation "org.koin:koin-core-ext:$koin_version"
@@ -108,9 +112,10 @@ dependencies {
 
     //** Room ORM
     implementation "androidx.room:room-runtime:$room_version"
-    annotationProcessor "androidx.room:room-compiler:$room_version" // For Kotlin use kapt instead of annotationProcessor
+//    annotationProcessor "androidx.room:room-compiler:$room_version" // For Kotlin use kapt instead of annotationProcessor
+    kapt "android.arch.lifecycle:compiler:1.1.1"
     implementation "androidx.room:room-ktx:$room_version"
-    implementation "androidx.room:room-rxjava2:$room_version"
-
+    kapt "android.arch.persistence.room:compiler:1.1.1"
+//    implementation "androidx.room:room-rxjava2:$room_version"
 
 }

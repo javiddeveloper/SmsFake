@@ -3,12 +3,9 @@ package com.sattar.j.smsfake.view.navigations.sendMessage
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.sattar.j.smsfake.data.dao.AppDataBase
 import com.sattar.j.smsfake.data.entity.UserMessage
 import com.sattar.j.smsfake.data.repository.DestinationRepositoryImpl
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
-import javax.inject.Inject
 
 /**
  * @author : SendMessageVM

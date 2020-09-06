@@ -9,7 +9,7 @@ import androidx.room.PrimaryKey
  * @summary : --
  * @since : 2020/Aug -- 4:32 PM
  */
-@Entity(tableName = "user-number")
+@Entity(tableName = "userNumber")
 data class UserMessage(
         @PrimaryKey(autoGenerate = true) var id: Int = 0,
         @ColumnInfo(name = "name") val name: String,

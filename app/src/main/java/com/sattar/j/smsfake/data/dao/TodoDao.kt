@@ -12,7 +12,7 @@ import io.reactivex.Observable
 @Dao
 interface TodoDao {
 
-    @Query("SELECT * FROM `user-number` order by id DESC")
+    @Query("SELECT * FROM userNumber order by id DESC")
     fun getAllList(): Observable<List<UserMessage>>
 
     @Insert
