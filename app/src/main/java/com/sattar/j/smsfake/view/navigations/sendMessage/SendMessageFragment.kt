@@ -1,4 +1,4 @@
-package com.sattar.j.smsfake.view.navigations.sendMessage.sendMessage
+package com.sattar.j.smsfake.view.navigations.sendMessage
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,18 +10,16 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import com.sattar.j.smsfake.R
 import com.sattar.j.smsfake.databinding.FragmentSendMessageBinding
+import com.sattar.j.smsfake.view.navigations.sendMessage.sendMessage.SendMessageVM
 import org.koin.android.ext.android.inject
 
 class SendMessageFragment : Fragment() {
     lateinit var mBinding: FragmentSendMessageBinding
-//     private val sendMessageVM : SendMessageVM by viewModel()
-//     private val sendMessageVM = get<SendMessageVM>()
      private val sendMessageVM by inject<SendMessageVM>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_send_message, container, false)
-//        sendMessageVM = ViewModelProvider(this).get(SendMessageVM::class.java)
         return mBinding.root
     }
 

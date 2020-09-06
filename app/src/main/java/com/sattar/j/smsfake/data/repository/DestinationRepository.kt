@@ -2,6 +2,7 @@ package com.sattar.j.smsfake.data.repository
 
 import com.sattar.j.smsfake.data.entity.UserMessage
 import io.reactivex.Observable
+import io.reactivex.Single
 
 /**
  * @author : javid

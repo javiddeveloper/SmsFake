@@ -11,5 +11,5 @@ interface MessageService {
     /**
      * get all message with manual list in first List
      */
-    fun getAllMessage(result: (ServiceResult<List<UserMessage>>))
+    fun getAllMessage(result: (ServiceResult<List<UserMessage>>)-> Unit)
 }
