@@ -27,21 +27,7 @@ class SendMessageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sendMessageVM.getDestinationList().observe(viewLifecycleOwner, Observer {
-            val list = ArrayList<String>()
-            for (destination in it) {
-                list.add(destination.name)
-            }
-            val adapter:ArrayAdapter<String> = ArrayAdapter(view.context,R.layout.item_destination_layout,R.id.txt_name,list)
-            mBinding.autoDestination.threshold = 1
-//            mBinding.autoDestination.
-            mBinding.autoDestination.setAdapter(adapter)
 
-//            Toast.makeText(context,it.toString(),Toast.LENGTH_SHORT).show()
-//            if (destinationAdapter.items.size > 0) {
-//                destinationAdapter = DestinationAdapter(view.context, R.layout.item_destination_layout, it as ArrayList<Destination>)
-//                mBinding.autoDestination.threshold = 1
-//                mBinding.autoDestination.setAdapter(destinationAdapter)
-//            }
         })
 
     }

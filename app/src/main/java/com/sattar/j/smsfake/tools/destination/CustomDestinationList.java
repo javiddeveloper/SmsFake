@@ -1,24 +1,16 @@
 package com.sattar.j.smsfake.tools.destination;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
-import android.view.animation.OvershootInterpolator;
 import android.widget.FrameLayout;
 import android.widget.PopupWindow;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.graphics.drawable.RoundedBitmapDrawable;
-import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,13 +18,10 @@ import com.sattar.j.smsfake.R;
 import com.sattar.j.smsfake.data.entity.Destination;
 import com.sattar.j.smsfake.tools.customViews.CustomEditText;
 import com.sattar.j.smsfake.tools.customViews.CustomImageView;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+import java.util.zip.Inflater;
 
 /**
  * Developed by javid
@@ -53,24 +42,23 @@ public class CustomDestinationList extends FrameLayout {
     public CustomDestinationList(@NonNull Context context) {
         super(context);
         this.context = context;
-        initView(null);
+        initView(null, context);
     }
 
     public CustomDestinationList(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
-        initView(attrs);
+        initView(attrs, context);
     }
 
 
     public CustomDestinationList(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        this.context = context;
-        initView(attrs);
+        initView(attrs, context);
     }
 
-    private void initView(AttributeSet attrs) {
-        rootView = LayoutInflater.from(context).inflate(R.layout.item_destination_layout, null);
+    private void initView(AttributeSet attrs, Context context) {
+        rootView = LayoutInflater.from(context).inflate(R.layout.item_destination_layout, null,false);
         edit_destName = rootView.findViewById(R.id.edit_destName);
         imageView_logo = rootView.findViewById(R.id.imageView_logo);
         imageView_arrowDown = rootView.findViewById(R.id.imageView_arrowDown);
@@ -79,7 +67,12 @@ public class CustomDestinationList extends FrameLayout {
 //        FrameLayout bottomSheet = dialogBranches.findViewById(com.google.android.material.R.id.design_bottom_sheet);
 //        BottomSheetBehavior.from(bottomSheet)
 //                .setState(BottomSheetBehavior.STATE_EXPANDED);
-        initCombo();
+        if (destination != null) {
+            edit_destName.setText(destination.getNumber());
+        } else {
+            edit_destName.setText(null);
+            edit_destName.setHint(R.string.enterPhoneOrName);
+        }
         edit_destName.setOnClickListener(view -> {
             showPopupListBranch();
         });
@@ -87,12 +80,7 @@ public class CustomDestinationList extends FrameLayout {
     }
 
     public void initCombo() {
-        if (destination != null) {
-            edit_destName.setText(destination.getNumber());
-        } else {
-            edit_destName.setText(null);
-            edit_destName.setHint(R.string.enterPhoneOrName);
-        }
+
     }
 
 //    public void showBranchList(View view) {
