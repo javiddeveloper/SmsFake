@@ -10,4 +10,5 @@
     <color name="textColor">#1E1E1E</color>
     <color name="timeColor">#cf0505</color>
     <color name="lineColor">#c0c0c0</color>
+    <color name="iconColor">#777777</color>
 </resources>

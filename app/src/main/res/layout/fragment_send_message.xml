@@ -1,59 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/colorBackground">
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize">
-        <androidx.appcompat.widget.Toolbar
+        android:layout_height="wrap_content"
+        android:background="@color/colorBackground"
+        android:layoutDirection="rtl">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <com.sattar.j.smsfake.tools.customViews.CustomTextView
+            android:layout_height="?attr/actionBarSize">
+
+            <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/app_name"
-                android:textSize="20sp"
-                android:gravity="center"
-                app:styleFont="medium"/>
-        </androidx.appcompat.widget.Toolbar>
-    </com.google.android.material.appbar.AppBarLayout>
-    <ScrollView
-        android:layout_above="@+id/card_send"
-        android:layout_below="@+id/appbar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="0dp">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/card_action"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="10sp"
-                android:layout_marginRight="16dp"
-                app:cardCornerRadius="5dp">
-
-                <LinearLayout
+                <com.sattar.j.smsfake.tools.customViews.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:gravity="center"
+                    android:text="@string/app_name"
+                    android:textSize="20sp"
+                    app:styleFont="medium" />
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
 
-                    <com.sattar.j.smsfake.tools.customViews.CustomTextView
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/card_send"
+            android:layout_below="@+id/appbar">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="0dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_action"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="10sp"
+                    android:layout_marginRight="16dp"
+                    app:cardCornerRadius="5dp">
+
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="22sp"
-                        android:layout_marginRight="20sp"
-                        android:text="@string/action_send"
-                        android:textColor="@color/titleCatColor"/>
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="22sp"
+                            android:layout_marginEnd="20sp">
+
+                            <ImageView
+                                android:id="@+id/img_send_action"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignParentEnd="true"
+                                app:srcCompat="@drawable/ic_send"
+                                app:tint="@color/titleCatColor" />
+
+                            <com.sattar.j.smsfake.tools.customViews.CustomTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="12sp"
+                                android:layout_toStartOf="@id/img_send_action"
+                                android:text="@string/action_send"
+                                android:textColor="@color/titleCatColor"
+                                app:styleFont="light" />
+
+                        </RelativeLayout>
 
                     <View
                         android:layout_width="match_parent"
@@ -86,7 +108,7 @@
                         android:orientation="horizontal"
                         android:weightSum="2">
 
-                        <RadioButton
+                        <com.sattar.j.smsfake.tools.customViews.CustomRadioButton
                             android:id="@+id/radio_verifyEmail"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -99,7 +121,7 @@
                             android:text="@string/receive"
                             app:buttonCompat="@null" />
 
-                        <RadioButton
+                        <com.sattar.j.smsfake.tools.customViews.CustomRadioButton
                             android:id="@+id/radio_verifySms"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -114,34 +136,57 @@
 
                     </RadioGroup>
 
-                    <androidx.appcompat.widget.AppCompatSpinner
-                        android:id="@+id/spinner_destinations"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:textAlignment="textEnd"
-                        android:textDirection="rtl" />
-
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="16dp">
-
-                        <com.sattar.j.smsfake.tools.customViews.CustomEditText
-                            android:id="@+id/phone"
-                            android:textColor="@color/text_color"
+                        <com.sattar.j.smsfake.tools.destination.CustomDestinationList
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="@string/phoneOrName"
-                            android:nextFocusDown="@id/message"
-                            android:maxLines="1" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                            android:layout_margin="16dp"
+                            android:id="@+id/destList" />
+                        <!--                    <com.google.android.material.textfield.TextInputLayout-->
+                        <!--                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+                        <!--                        android:layout_width="match_parent"-->
+                        <!--                        android:layout_height="wrap_content"-->
+                        <!--                        android:layout_margin="16dp">-->
+                        <!--                    <com.sattar.j.smsfake.tools.customViews.CustomAutoCompleteTextView-->
+                        <!--                        android:id="@+id/auto_destination"-->
+                        <!--                        android:layout_height="match_parent"-->
+                        <!--                        android:layout_margin="16dp"-->
+                        <!--                        android:layout_width="match_parent"-->
+                        <!--                        android:drawableStart="@drawable/ic_menu_down"-->
+                        <!--                        android:hint="@string/phoneOrName"-->
+                        <!--                        android:inputType="text"-->
+                        <!--                        android:layoutDirection="rtl"-->
+                        <!--                        android:textSize="12sp"-->
+                        <!--                        app:styleFont="light" />-->
+                        <!--                    <androidx.appcompat.widget.AppCompatSpinner-->
+                        <!--                        android:id="@+id/spinner_destinations"-->
+                        <!--                        android:layout_width="match_parent"-->
+                        <!--                        android:layout_height="wrap_content"-->
+                        <!--                        android:layout_marginStart="16dp"-->
+                        <!--                        android:layout_marginTop="16dp"-->
+                        <!--                        android:layout_marginEnd="16dp"-->
+                        <!--                        android:textAlignment="textEnd"-->
+                        <!--                        android:textDirection="rtl" />-->
 
-                </LinearLayout>
+                        <!--                    </com.google.android.material.textfield.TextInputLayout>-->
+                        <!--                    <com.google.android.material.textfield.TextInputLayout-->
+                        <!--                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+                        <!--                        android:layout_width="match_parent"-->
+                        <!--                        android:layout_height="wrap_content"-->
+                        <!--                        android:layout_margin="16dp">-->
+
+                        <!--                        <com.sattar.j.smsfake.tools.customViews.CustomEditText-->
+                        <!--                            android:id="@+id/phone"-->
+                        <!--                            android:textColor="@color/text_color"-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:hint="@string/phoneOrName"-->
+                        <!--                            android:nextFocusDown="@id/message"-->
+                        <!--                            android:drawableLeft="@drawable/ic_close"-->
+                        <!--                            android:maxLines="1"-->
+                        <!--                            app:styleFont="light"/>-->
+                        <!--                    </com.google.android.material.textfield.TextInputLayout>-->
+
+                    </LinearLayout>
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -160,15 +205,31 @@
                     android:layout_margin="22dp"
                     android:orientation="vertical">
 
-                    <com.sattar.j.smsfake.tools.customViews.CustomTextView
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="12sp"
-                        android:layout_marginBottom="12sp"
-                        android:text="@string/schedule"
-                        android:textColor="@color/titleCatColor"/>
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/img_schedule"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentEnd="true"
+                            app:srcCompat="@drawable/ic_calendar_clock"
+                            app:tint="@color/titleCatColor" />
+
+                        <com.sattar.j.smsfake.tools.customViews.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="12sp"
+                            android:layout_toStartOf="@id/img_schedule"
+                            android:text="@string/schedule"
+                            android:textColor="@color/titleCatColor"
+                            app:styleFont="light" />
+
+                    </RelativeLayout>
 
                     <View
+                        android:layout_marginTop="10sp"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="@color/lineColor" />
@@ -188,7 +249,8 @@
                             android:gravity="center"
                             android:text="@string/time"
                             android:textColor="@color/timeColor"
-                            android:textSize="19dp" />
+                            android:textSize="19dp"
+                            app:styleFont="light" />
 
                         <com.sattar.j.smsfake.tools.customViews.CustomTextView
                             android:layout_width="0dp"
@@ -196,7 +258,8 @@
                             android:layout_weight="0.5"
                             android:gravity="center"
                             android:textColor="@color/text_color"
-                            android:text="@string/timeSend" />
+                            android:text="@string/timeSend"
+                            app:styleFont="light" />
 
 
                         <com.sattar.j.smsfake.tools.customViews.CustomTextView
@@ -207,7 +270,8 @@
                             android:gravity="center"
                             android:text="@string/date"
                             android:textColor="@color/timeColor"
-                            android:textSize="19dp" />
+                            android:textSize="19dp"
+                            app:styleFont="light" />
 
                         <com.sattar.j.smsfake.tools.customViews.CustomTextView
                             android:layout_width="0dp"
@@ -216,7 +280,8 @@
                             android:gravity="center"
 
                             android:textColor="@color/text_color"
-                            android:text="@string/dateSend" />
+                            android:text="@string/dateSend"
+                            app:styleFont="light" />
                     </LinearLayout>
 
 
@@ -247,6 +312,7 @@
                         android:gravity="center"
                         android:textColor="@color/text_color"
                         android:lineSpacingMultiplier="1.3"
+                        app:styleFont="light"
                         android:text="@string/danger_message" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
@@ -257,7 +323,6 @@
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="12sp"
@@ -283,7 +348,8 @@
                     android:layout_height="wrap_content"
                     android:maxLines="5"
                     android:textColor="@color/text_color"
-                    android:hint="@string/messageText" />
+                    android:hint="@string/messageText"
+                    app:styleFont="light" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -293,7 +359,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerInParent="true"
                 android:layout_gravity="center"
-                android:layout_margin="0dp"
+                android:layout_marginEnd="10dp"
                 app:backgroundTintMode="src_in"
                 app:backgroundTint="@color/colorAccent"
                 app:tint="@color/white"

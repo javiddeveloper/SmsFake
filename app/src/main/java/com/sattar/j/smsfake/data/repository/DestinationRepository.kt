@@ -1,8 +1,7 @@
 package com.sattar.j.smsfake.data.repository
 
-import com.sattar.j.smsfake.data.entity.UserMessage
+import com.sattar.j.smsfake.data.entity.Destination
 import io.reactivex.Observable
-import io.reactivex.Single
 
 /**
  * @author : javid
@@ -10,6 +9,6 @@ import io.reactivex.Single
  * @since : 2020/Aug -- 4:36 PM
  */
 interface DestinationRepository {
-    fun getDestinationListRepo(): Observable<List<UserMessage>>
-    fun addDestinationRepo(userMessage: UserMessage)
+    fun getDestinationListRepo(): Observable<List<Destination>>
+    fun addDestinationRepo(destination: Destination)
 }

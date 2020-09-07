@@ -2,7 +2,7 @@ package com.sattar.j.smsfake.view.navigations.sendMessage.sendMessage
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.sattar.j.smsfake.data.entity.UserMessage
+import com.sattar.j.smsfake.data.entity.Destination
 import com.sattar.j.smsfake.data.service.MessageService
 import com.sattar.j.smsfake.data.service.ServiceResult
 import io.reactivex.disposables.CompositeDisposable
@@ -15,10 +15,10 @@ import io.reactivex.disposables.CompositeDisposable
 class SendMessageVM(
         private val destinationRepositoryImpl: MessageService
 ) : ViewModel() {
-    private var destinationList = MutableLiveData<List<UserMessage>>()
+    private var destinationList = MutableLiveData<List<Destination>>()
     private val compositeDisposable = CompositeDisposable()
 
-    fun getDestinationList(): MutableLiveData<List<UserMessage>> {
+    fun getDestinationList(): MutableLiveData<List<Destination>> {
         destinationRepositoryImpl.getAllMessage {
             when (it) {
                 is ServiceResult.Success -> destinationList.value = it.data

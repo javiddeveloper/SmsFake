@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layoutDirection="rtl"
+    android:minHeight="?android:attr/listPreferredItemHeightSmall">
+
+    <com.sattar.j.smsfake.tools.customViews.CustomImageView
+        android:id="@+id/img_avatar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="7sp"
+        android:layout_marginEnd="12sp"
+        android:layout_marginStart="12sp"
+        android:layout_marginBottom="7sp"
+        app:srcCompat="@drawable/ic_account"
+        app:tint="@color/iconColor" />
+
+    <com.sattar.j.smsfake.tools.customViews.CustomTextView
+        android:id="@+id/txt_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10sp"
+        android:layout_toStartOf="@id/img_avatar"
+        android:text="@string/schedule"
+        android:textColor="@color/textColor"
+        app:styleFont="medium" />
+
+    <com.sattar.j.smsfake.tools.customViews.CustomTextView
+        android:id="@+id/txt_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txt_name"
+        android:layout_toStartOf="@id/img_avatar"
+        android:text="@string/enterPhoneOrName"
+        android:textColor="@color/iconColor"
+        app:styleFont="light" />
+
+
+</RelativeLayout>

@@ -1,17 +1,15 @@
 package com.sattar.j.smsfake.data.dao
 
-import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.sattar.j.smsfake.data.entity.UserMessage
+import com.sattar.j.smsfake.data.entity.Destination
 
 /**
  * @author : javid
  * @summary : --
  * @since : 2020/Aug -- 7:11 PM
  */
-@Database(entities = [UserMessage::class], version = 1)
+@Database(entities = [Destination::class], version = 1)
 abstract class AppDataBase : RoomDatabase() {
     abstract fun dao(): TodoDao
 //    companion object {

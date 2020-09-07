@@ -9,8 +9,8 @@ import androidx.room.PrimaryKey
  * @summary : --
  * @since : 2020/Aug -- 4:32 PM
  */
-@Entity(tableName = "userNumber")
-data class UserMessage(
+@Entity(tableName = "destination")
+data class Destination(
         @PrimaryKey(autoGenerate = true) var id: Int = 0,
         @ColumnInfo(name = "name") val name: String,
         @ColumnInfo(name = "number") val number: String,

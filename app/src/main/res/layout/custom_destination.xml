@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/layout_destination"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.sattar.j.smsfake.tools.customViews.CustomImageView
+            android:id="@+id/imageView_arrowDown"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentStart="true"
+            android:padding="5dp"
+            app:srcCompat="@drawable/ic_menu_down" />
+
+        <com.sattar.j.smsfake.tools.customViews.CustomImageView
+            android:id="@+id/imageView_logo"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:padding="5dp"
+            app:srcCompat="@drawable/ic_account"
+            app:tint="@color/iconColor" />
+
+        <com.sattar.j.smsfake.tools.customViews.CustomEditText
+            android:id="@+id/edit_destName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toStartOf="@id/imageView_logo"
+            android:layout_toEndOf="@id/imageView_arrowDown"
+            android:background="@null"
+            android:gravity="start"
+            android:hint="@string/enterPhoneOrName" />
+    </RelativeLayout>
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/rl_message_box"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/layout_destination"-->
+<!--        android:visibility="visible">-->
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:id="@+id/rlc_dest"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:minHeight="250dp" />-->
+<!--    </RelativeLayout>-->
+
+</RelativeLayout>

@@ -1,8 +1,7 @@
 package com.sattar.j.smsfake.data.dao
 
 import androidx.room.*
-import com.sattar.j.smsfake.data.entity.UserMessage
-import io.reactivex.Observable
+import com.sattar.j.smsfake.data.entity.Destination
 
 /**
  * @author : javid
@@ -12,15 +11,15 @@ import io.reactivex.Observable
 @Dao
 interface TodoDao {
 
-    @Query("SELECT * FROM userNumber")
-    fun getAllList(): List<UserMessage>
+    @Query("SELECT * FROM destination")
+    fun getAllList(): List<Destination>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun addDestination(userMessage: UserMessage)
+    fun addDestination(destination: Destination)
 
     @Delete
-    fun deleteDestination(userMessage: UserMessage)
+    fun deleteDestination(destination: Destination)
 
     @Update
-    fun updateDestination(userMessage: UserMessage)
+    fun updateDestination(destination: Destination)
 }

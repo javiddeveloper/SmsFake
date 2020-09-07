@@ -1,6 +1,6 @@
 package com.sattar.j.smsfake.data.service
 
-import com.sattar.j.smsfake.data.entity.UserMessage
+import com.sattar.j.smsfake.data.entity.Destination
 
 /**
  * @author  : javid
@@ -11,5 +11,5 @@ interface MessageService {
     /**
      * get all message with manual list in first List
      */
-    fun getAllMessage(result: (ServiceResult<List<UserMessage>>)-> Unit)
+    fun getAllMessage(result: (ServiceResult<List<Destination>>)-> Unit)
 }

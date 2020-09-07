@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">پیامک تقلبی</string>
-    <string name="phoneOrName">تلفن / نام</string>
+    <string name="enterPhoneOrName">نام یا شماره را وارد کنید</string>
     <string name="timeSend">زمان :</string>
     <string name="dateSend">تاریخ :</string>
     <string name="time">time</string>
     <string name="date">Date</string>
     <string name="action_send">عملیات ارسال</string>
-    <string name="schedule">زمانبندی</string>
+    <string name="schedule">زمانبندی ارسال</string>
     <string name="gmail">JavidDeveloper@Gmail.com</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

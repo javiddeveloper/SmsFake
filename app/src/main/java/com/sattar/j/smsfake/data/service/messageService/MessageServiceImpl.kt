@@ -1,7 +1,7 @@
 package com.sattar.j.smsfake.data.service.messageService
 
 import android.annotation.SuppressLint
-import com.sattar.j.smsfake.data.entity.UserMessage
+import com.sattar.j.smsfake.data.entity.Destination
 import com.sattar.j.smsfake.data.repository.DestinationRepository
 import com.sattar.j.smsfake.data.service.MessageService
 import com.sattar.j.smsfake.data.service.ServiceResult
@@ -13,7 +13,7 @@ import com.sattar.j.smsfake.data.service.ServiceResult
  */
 class MessageServiceImpl(val repository: DestinationRepository) : MessageService {
     @SuppressLint("CheckResult")
-    override fun getAllMessage(result: (ServiceResult<List<UserMessage>>) -> Unit) {
+    override fun getAllMessage(result: (ServiceResult<List<Destination>>) -> Unit) {
         result(ServiceResult.Loading())
         repository.getDestinationListRepo().subscribe({
             result(ServiceResult.Success(it))

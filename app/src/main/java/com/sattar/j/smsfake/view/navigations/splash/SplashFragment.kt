@@ -27,9 +27,9 @@ class SplashFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            mBinding.background.LoadBlure(R.drawable.sms)
+            mBinding.background.setImageBlur(R.drawable.sms)
         } else {
-            mBinding.background.Load(R.drawable.sms)
+            mBinding.background.setImage(R.drawable.sms)
         }
         composit = CompositeDisposable()
         composit.add(Observable.just(0)
