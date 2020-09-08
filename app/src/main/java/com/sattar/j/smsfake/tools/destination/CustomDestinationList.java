@@ -14,11 +14,13 @@ import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sattar.j.smsfake.R;
 import com.sattar.j.smsfake.data.entity.Destination;
+import com.sattar.j.smsfake.databinding.LayoutCustomDestinationBinding;
 import com.sattar.j.smsfake.tools.customViews.CustomEditText;
 import com.sattar.j.smsfake.tools.customViews.CustomImageView;
 
@@ -28,17 +30,18 @@ import java.util.List;
 /**
  * Developed by javid
  */
-public class CustomDestinationList extends LinearLayout {
+public class CustomDestinationList extends RelativeLayout {
     private List<Destination> destinations = new ArrayList<>();
     private Destination destination;
-    private CustomEditText edit_destName;
-    private CustomImageView imageView_logo;
-    private CustomImageView imageView_arrowDown;
+    private LayoutCustomDestinationBinding customDestinationBinding;
+//    private CustomEditText edit_destName;
+//    private CustomImageView imageView_logo;
+//    private CustomImageView imageView_arrowDown;
     //    private RecyclerView rlc_destination;
-    private View rootView;
-    private View popUpView;
+//    private View rootView;
+//    private View popUpView;
     private LayoutInflater layoutInflater;
-    private RelativeLayout layout_destination;
+//    private RelativeLayout layout_destination;
 
     public CustomDestinationList(@NonNull Context context) {
         super(context);
@@ -58,29 +61,31 @@ public class CustomDestinationList extends LinearLayout {
 
     private void initView(AttributeSet attrs, Context context) {
         layoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//        layoutInflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 //        rootView = LayoutInflater.from(context).inflate(R.layout.layout_custom_destination,null);
-        rootView = layoutInflater.inflate(R.layout.layout_custom_destination, null, false);
-        edit_destName = rootView.findViewById(R.id.edit_destName);
-        imageView_logo = rootView.findViewById(R.id.imageView_logo);
-        imageView_arrowDown = rootView.findViewById(R.id.imageView_arrowDown);
-        layout_destination = rootView.findViewById(R.id.layout_destination);
+//        rootView = layoutInflater.inflate(R.layout.layout_custom_destination, null, false);
+        customDestinationBinding = LayoutCustomDestinationBinding.inflate(layoutInflater);
+//        edit_destName = rootView.findViewById(R.id.edit_destName);
+//        imageView_logo = rootView.findViewById(R.id.imageView_logo);
+//        imageView_arrowDown = rootView.findViewById(R.id.imageView_arrowDown);
+//        layout_destination = rootView.findViewById(R.id.layout_destination);
 
         if (destination != null) {
-            edit_destName.setText(destination.getNumber());
+            customDestinationBinding.editDestName.setText(destination.getNumber());
         } else {
-            edit_destName.setText(null);
-            edit_destName.setHint(R.string.enterPhoneOrName);
+            customDestinationBinding.editDestName.setText(null);
+            customDestinationBinding.editDestName.setHint(R.string.enterPhoneOrName);
         }
-        edit_destName.setOnClickListener(view -> {
+        customDestinationBinding.editDestName.setOnClickListener(view -> {
             showDestinationPopup(view.getContext());
         });
-        edit_destName.setOnFocusChangeListener((view, b) -> showDestinationPopup(view.getContext()));
-        addView(rootView);
+        customDestinationBinding.editDestName.setOnFocusChangeListener((view, b) -> showDestinationPopup(view.getContext()));
+        addView(customDestinationBinding.getRoot());
     }
 
 
     private void showDestinationPopup(Context context) {
-        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View layout = layoutInflater.inflate(R.layout.layout_destination_list, null);
         PopupWindow popupList = new PopupWindow(this);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -93,7 +98,7 @@ public class CustomDestinationList extends LinearLayout {
         RecyclerView rlc_destination = layout.findViewById(R.id.rlc_destination);
         rlc_destination.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false));
         rlc_destination.setAdapter(adapter);
-        popupList.showAsDropDown(layout_destination.getRootView());
+//        popupList.showAsDropDown(customDestinationBinding.layoutDestination);
 //        mBranchListBinding.imageViewClear.setVisibility(View.VISIBLE);
 //        mBranchListBinding.imageViewSearch.setVisibility(View.VISIBLE);
 //        mBranchListBinding.imageViewFundRefresh.setOnClickListener(view -> {

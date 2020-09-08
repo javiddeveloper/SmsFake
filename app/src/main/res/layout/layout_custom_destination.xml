@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:id="@+id/layout_destination"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
-        <com.sattar.j.smsfake.tools.customViews.CustomImageView
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.sattar.j.smsfake.tools.customViews.CustomImageView
             android:id="@+id/imageView_arrowDown"
             android:layout_width="45dp"
             android:layout_height="45dp"
@@ -47,11 +49,12 @@
 <!--        android:layout_below="@+id/layout_destination"-->
 <!--        android:visibility="visible">-->
 
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:id="@+id/rlc_dest"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:minHeight="250dp" />-->
-<!--    </RelativeLayout>-->
+        <!--        <androidx.recyclerview.widget.RecyclerView-->
+        <!--            android:id="@+id/rlc_dest"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:minHeight="250dp" />-->
+        <!--    </RelativeLayout>-->
 
-</RelativeLayout>
+    </RelativeLayout>
+</layout>
