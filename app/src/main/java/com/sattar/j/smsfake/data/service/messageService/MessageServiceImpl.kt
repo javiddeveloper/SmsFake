@@ -2,7 +2,7 @@ package com.sattar.j.smsfake.data.service.messageService
 
 import android.annotation.SuppressLint
 import com.sattar.j.smsfake.data.entity.Destination
-import com.sattar.j.smsfake.data.repository.DestinationRepository
+import com.sattar.j.smsfake.data.repository.destination.DestinationRepository
 import com.sattar.j.smsfake.data.service.MessageService
 import com.sattar.j.smsfake.data.service.ServiceResult
 

@@ -13,13 +13,13 @@ import io.reactivex.disposables.CompositeDisposable
  * @since : 2020/Aug -- 8:00 PM
  */
 class SendMessageVM(
-        private val destinationRepositoryImpl: MessageService
+        private val messageService: MessageService
 ) : ViewModel() {
     private var destinationList = MutableLiveData<List<Destination>>()
     private val compositeDisposable = CompositeDisposable()
 
     fun getDestinationList(): MutableLiveData<List<Destination>> {
-        destinationRepositoryImpl.getAllMessage {
+        messageService.getAllMessage {
             when (it) {
                 is ServiceResult.Success -> destinationList.value = it.data
                 is ServiceResult.Error -> it.throwable.toString()

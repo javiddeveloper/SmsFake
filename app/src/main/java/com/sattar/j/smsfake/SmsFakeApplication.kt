@@ -3,8 +3,10 @@ package com.sattar.j.smsfake
 import android.app.Application
 import android.content.Context
 import androidx.multidex.MultiDex
+import com.sattar.j.smsfake.data.network.api.ApiClient
 import com.sattar.j.smsfake.tools.repository
 import com.sattar.j.smsfake.tools.db
+import com.sattar.j.smsfake.tools.retrofit
 import com.sattar.j.smsfake.tools.viewModels
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -35,7 +37,11 @@ class SmsFakeApplication : Application() {
             // Android context
             androidContext(this@SmsFakeApplication)
             // modules
-            modules(listOf(viewModels,db,repository))
+            modules(listOf(
+                    viewModels,
+                    retrofit(ApiClient.BASE_URL),
+                    db,
+                    repository))
         }
     }
 

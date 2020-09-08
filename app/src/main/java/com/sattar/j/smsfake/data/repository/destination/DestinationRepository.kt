@@ -1,4 +1,4 @@
-package com.sattar.j.smsfake.data.repository
+package com.sattar.j.smsfake.data.repository.destination
 
 import com.sattar.j.smsfake.data.entity.Destination
 import io.reactivex.Observable

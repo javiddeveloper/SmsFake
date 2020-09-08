@@ -1,10 +1,8 @@
-package com.sattar.j.smsfake.data.repository
+package com.sattar.j.smsfake.data.repository.destination
 
 import com.sattar.j.smsfake.data.dao.AppDataBase
 import com.sattar.j.smsfake.data.entity.Destination
 import io.reactivex.Observable
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 
 /**
  * @author : DestinationRepository
@@ -13,7 +11,7 @@ import io.reactivex.schedulers.Schedulers
  */
 open class DestinationRepositoryImpl(
         val appDataBase: AppDataBase
-) : DestinationRepository{
+) : DestinationRepository {
 
     private fun generatePrimitiveList(): Observable<List<Destination>> {
         val list = mutableListOf<Destination>()
