@@ -11,10 +11,6 @@ import com.sattar.j.smsfake.SmsFakeApplication
  * @summary : --
  */
 
-//fun isNetworkConnected(): Boolean{
-//    val conManager: ConnectivityManager =
-//
-//}
 class Network {
     private val context by lazy {
         SmsFakeApplication.appContext
