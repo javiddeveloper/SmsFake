@@ -26,4 +26,8 @@
     <string name="receive">دریافت میکنم</string>
     <string name="send">ارسال میکنم</string>
     <string name="messageText">متن پیام</string>
+    <string name="update_myket">بروزرسانی در مایکت</string>
+    <string name="exit_app">خروج</string>
+    <string name="cancel">لغو</string>
+    <string name="update_version">بروزرسانی نسخه</string>
 </resources>

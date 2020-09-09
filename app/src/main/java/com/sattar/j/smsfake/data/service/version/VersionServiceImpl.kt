@@ -1,7 +1,9 @@
-package com.sattar.j.smsfake.data.repository.version
+package com.sattar.j.smsfake.data.service.version
 
 import android.annotation.SuppressLint
 import com.sattar.j.smsfake.data.entity.Version
+import com.sattar.j.smsfake.data.repository.version.VersionRepository
+import com.sattar.j.smsfake.data.repository.version.VersionService
 import com.sattar.j.smsfake.data.service.ServiceResult
 
 /**

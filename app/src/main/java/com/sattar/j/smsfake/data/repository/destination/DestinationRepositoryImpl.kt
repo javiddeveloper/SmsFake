@@ -3,6 +3,8 @@ package com.sattar.j.smsfake.data.repository.destination
 import com.sattar.j.smsfake.data.dao.AppDataBase
 import com.sattar.j.smsfake.data.entity.Destination
 import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 /**
  * @author : DestinationRepository
@@ -24,12 +26,12 @@ open class DestinationRepositoryImpl(
     }
 
     override fun getDestinationListRepo(): Observable<List<Destination>> {
-        return generatePrimitiveList()
-//        val firstItems = generatePrimitiveList()
-//        val daoItems   = Observable.just(appDataBase.dao().getAllList())
-//       return Observable.concat(firstItems,daoItems)
-//               .subscribeOn(Schedulers.io())
-//               .observeOn(AndroidSchedulers.mainThread())
+//        return generatePrimitiveList()
+        val firstItems = generatePrimitiveList()
+        val daoItems   = Observable.just(appDataBase.dao().getAllList())
+       return Observable.concat(firstItems,daoItems)
+               .subscribeOn(Schedulers.io())
+               .observeOn(AndroidSchedulers.mainThread())
 
     }
 

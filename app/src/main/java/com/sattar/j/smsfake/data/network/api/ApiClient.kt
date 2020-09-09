@@ -9,8 +9,8 @@ import retrofit2.converter.gson.GsonConverterFactory
  * @summary : --
  */
 object ApiClient {
-    const val BASE_URL = "http://javiddev.ir/webService/sms/"
-    const val VERSION = "/v1/"
+    const val BASE_URL = "http://javiddev.ir/"
+    const val VERSION = "/webService/sms/v1/"
 //    val apiInterface: ApiInterface
 //    private val retrofit: Retrofit
 

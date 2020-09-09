@@ -1,8 +1,7 @@
 package com.sattar.j.smsfake.data.repository.version
 
 import com.sattar.j.smsfake.data.entity.Version
-import com.sattar.j.smsfake.data.network.api.ApiInterface
-import io.reactivex.Single
+import io.reactivex.rxjava3.core.Single
 
 /**
  * @author  : javid

@@ -1,9 +1,12 @@
 package com.sattar.j.smsfake.tools
 
+import android.content.Intent
 import android.graphics.Typeface
+import android.net.Uri
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import com.sattar.j.smsfake.BuildConfig
 import com.sattar.j.smsfake.SmsFakeApplication
 
 /**
@@ -20,6 +23,25 @@ class Utility {
                 val typeFace = Typeface.createFromAsset(SmsFakeApplication.appContext?.assets, SmsFakeApplication.getFont(4))
                 tv.typeface = typeFace
             }
+        }
+
+        fun appVersionName(): String {
+            return BuildConfig.VERSION_NAME
+        }
+
+        fun appVersionCode(): Int {
+            return BuildConfig.VERSION_CODE
+        }
+
+
+        fun openUrl(url: String) {
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.data = Uri.parse(url)
+            SmsFakeApplication.appContext?.startActivity(intent)
+        }
+        fun appTypeFace(type:Int):Typeface{
+            return Typeface.createFromAsset(SmsFakeApplication.appContext?.assets, SmsFakeApplication.getFont(type))
         }
     }
 }

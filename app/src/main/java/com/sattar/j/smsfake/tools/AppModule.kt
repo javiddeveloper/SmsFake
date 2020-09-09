@@ -1,6 +1,7 @@
 package com.sattar.j.smsfake.tools
 
 import androidx.room.Room
+import com.google.gson.GsonBuilder
 import com.sattar.j.smsfake.data.dao.AppDataBase
 import com.sattar.j.smsfake.data.network.api.ApiInterface
 import com.sattar.j.smsfake.data.network.api.RestConnection
@@ -9,11 +10,12 @@ import com.sattar.j.smsfake.data.repository.destination.DestinationRepositoryImp
 import com.sattar.j.smsfake.data.repository.version.VersionRepository
 import com.sattar.j.smsfake.data.repository.version.VersionRepositoryImpl
 import com.sattar.j.smsfake.data.repository.version.VersionService
-import com.sattar.j.smsfake.data.repository.version.VersionServiceImpl
+import com.sattar.j.smsfake.data.service.version.VersionServiceImpl
 import com.sattar.j.smsfake.data.service.MessageService
 import com.sattar.j.smsfake.data.service.messageService.MessageServiceImpl
 import com.sattar.j.smsfake.view.navigations.sendMessage.SendMessageVM
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
+import io.reactivex.rxjava3.schedulers.Schedulers
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -27,11 +29,15 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 
 val repository = module {
+    single {
+        val retrofit: Retrofit = get()
+        retrofit.create(ApiInterface::class.java)
+    }
     /**
      * repository
      */
     factory<DestinationRepository> { DestinationRepositoryImpl(get()) }
-    factory<VersionRepository> { VersionRepositoryImpl(get(),get()) }
+    factory<VersionRepository> { VersionRepositoryImpl(get()) }
 
     /**
      * service
@@ -42,7 +48,7 @@ val repository = module {
 
 }
 val viewModels = module {
-    viewModel { SendMessageVM(get()) }
+    viewModel { SendMessageVM(get(),get()) }
 }
 
 val db = module {
@@ -55,6 +61,9 @@ val db = module {
 }
 
 fun retrofit(baseUrl: String) = module {
+    val gson = GsonBuilder()
+            .setLenient()
+            .create()
     single {
         Retrofit.Builder()
                 .baseUrl(baseUrl)
@@ -62,8 +71,9 @@ fun retrofit(baseUrl: String) = module {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
     }
-    single { get<Retrofit>().create(ApiInterface::class.java) }
+
     factory { RestConnection(get()) }
-    single { Network() }
+    factory { Network() }
+
 }
 

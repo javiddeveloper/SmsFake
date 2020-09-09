@@ -14,11 +14,11 @@ import org.koin.core.context.startKoin
 class SmsFakeApplication : Application() {
     companion object {
         var appContext: Context? = null
-        private const val NORMAL_FONT = 0
-        private const val BOLD_FONT = 1
-        private const val MEDIUM_FONT = 2
-        private const val LIGHT_FONT = 3
-        private const val ULTRA_LIGHT_FONT = 4
+        const val NORMAL_FONT = 0
+        const val BOLD_FONT = 1
+        const val MEDIUM_FONT = 2
+        const val LIGHT_FONT = 3
+        const val ULTRA_LIGHT_FONT = 4
 
         @JvmStatic
         fun getFont(type: Int): String {

@@ -2,7 +2,7 @@ package com.sattar.j.smsfake.data.network.api
 
 import com.sattar.j.smsfake.data.entity.About
 import com.sattar.j.smsfake.data.entity.Version
-import io.reactivex.Single
+import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 
 /**
