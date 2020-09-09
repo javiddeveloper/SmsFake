@@ -45,7 +45,7 @@ class SendMessageFragment : Fragment() {
     }
 
     private fun showUpdateDialog(context: Context, version: Version) {
-        if (mDialog != null) return
+//        if (mDialog != null) return
         val isForceUpdate = Integer.valueOf(version.isForce) == 1
         mDialog = DialogSheet(context, true)
         mDialog?.setCancelable(!isForceUpdate)

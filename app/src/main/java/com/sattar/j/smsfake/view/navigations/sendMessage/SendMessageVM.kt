@@ -7,7 +7,6 @@ import com.sattar.j.smsfake.data.entity.Version
 import com.sattar.j.smsfake.data.repository.version.VersionService
 import com.sattar.j.smsfake.data.service.MessageService
 import com.sattar.j.smsfake.data.service.ServiceResult
-import io.reactivex.disposables.CompositeDisposable
 
 /**
  * @author : SendMessageVM
@@ -43,6 +42,6 @@ class SendMessageVM(
 
     override fun onCleared() {
         super.onCleared()
-
+        versionService.disposeObservable()
     }
 }

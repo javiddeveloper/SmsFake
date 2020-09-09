@@ -15,5 +15,5 @@ interface VersionService {
      *  @return [Version] Model
      */
     fun getCurrentVersion(result: (ServiceResult<Version>) -> Unit)
-
+    fun disposeObservable()
 }

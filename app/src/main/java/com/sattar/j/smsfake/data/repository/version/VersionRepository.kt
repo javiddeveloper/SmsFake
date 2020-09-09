@@ -15,5 +15,4 @@ interface VersionRepository {
      *  @return [Version] Model
      */
     fun getCurrentVersion(): Single<Version>
-
 }
