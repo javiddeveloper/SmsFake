@@ -1,4 +1,4 @@
-package com.sattar.j.smsfake.view.navigations.sendMessage.sendMessage
+package com.sattar.j.smsfake.view.navigations.sendMessage
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,7 +19,7 @@ class SendMessageVM(
     private val compositeDisposable = CompositeDisposable()
 
     fun getDestinationList(): MutableLiveData<List<Destination>> {
-        messageService.getAllMessage {
+       messageService.getAllMessage {
             when (it) {
                 is ServiceResult.Success -> destinationList.value = it.data
                 is ServiceResult.Error -> it.throwable.toString()

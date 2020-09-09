@@ -1,28 +1,23 @@
-package com.sattar.j.smsfake.tools.destination;
+package com.sattar.j.smsfake.view.navigations.sendMessage.destination;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sattar.j.smsfake.R;
 import com.sattar.j.smsfake.data.entity.Destination;
 import com.sattar.j.smsfake.databinding.LayoutCustomDestinationBinding;
-import com.sattar.j.smsfake.tools.customViews.CustomEditText;
-import com.sattar.j.smsfake.tools.customViews.CustomImageView;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,9 +1,10 @@
-package com.sattar.j.smsfake.tools.customViews
+package com.sattar.j.smsfake.tools
 
 import android.os.Build
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.sattar.j.smsfake.tools.customViews.CustomImageView
 
 /**
  * @author  : javid

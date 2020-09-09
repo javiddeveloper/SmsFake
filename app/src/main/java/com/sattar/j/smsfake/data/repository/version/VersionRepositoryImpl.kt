@@ -2,6 +2,7 @@ package com.sattar.j.smsfake.data.repository.version
 
 import com.sattar.j.smsfake.data.entity.Version
 import com.sattar.j.smsfake.data.network.api.ApiInterface
+import com.sattar.j.smsfake.tools.Network
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -12,7 +13,8 @@ import io.reactivex.schedulers.Schedulers
  * @summary : --
  */
 class VersionRepositoryImpl(
-        private val apiInterface: ApiInterface
+        private val apiInterface: ApiInterface,
+        private val network: Network
 ) : VersionRepository {
     override fun getCurrentVersion(): Single<Version> {
         return apiInterface.getCurrentVersion()

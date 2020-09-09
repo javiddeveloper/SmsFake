@@ -1,4 +1,4 @@
-package com.sattar.j.smsfake.tools.destination;
+package com.sattar.j.smsfake.view.navigations.sendMessage.destination;
 
 import android.content.Context;
 import android.view.LayoutInflater;

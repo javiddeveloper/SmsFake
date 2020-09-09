@@ -4,8 +4,8 @@ import android.app.Application
 import android.content.Context
 import androidx.multidex.MultiDex
 import com.sattar.j.smsfake.data.network.api.ApiClient
-import com.sattar.j.smsfake.tools.repository
 import com.sattar.j.smsfake.tools.db
+import com.sattar.j.smsfake.tools.repository
 import com.sattar.j.smsfake.tools.retrofit
 import com.sattar.j.smsfake.tools.viewModels
 import org.koin.android.ext.koin.androidContext
@@ -13,6 +13,7 @@ import org.koin.core.context.startKoin
 
 class SmsFakeApplication : Application() {
     companion object {
+        var appContext: Context? = null
         private const val NORMAL_FONT = 0
         private const val BOLD_FONT = 1
         private const val MEDIUM_FONT = 2
@@ -33,6 +34,7 @@ class SmsFakeApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        appContext = applicationContext
         startKoin {
             // Android context
             androidContext(this@SmsFakeApplication)

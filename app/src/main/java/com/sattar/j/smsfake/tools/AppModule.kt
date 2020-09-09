@@ -12,7 +12,7 @@ import com.sattar.j.smsfake.data.repository.version.VersionService
 import com.sattar.j.smsfake.data.repository.version.VersionServiceImpl
 import com.sattar.j.smsfake.data.service.MessageService
 import com.sattar.j.smsfake.data.service.messageService.MessageServiceImpl
-import com.sattar.j.smsfake.view.navigations.sendMessage.sendMessage.SendMessageVM
+import com.sattar.j.smsfake.view.navigations.sendMessage.SendMessageVM
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -31,7 +31,7 @@ val repository = module {
      * repository
      */
     factory<DestinationRepository> { DestinationRepositoryImpl(get()) }
-    factory<VersionRepository> { VersionRepositoryImpl(get()) }
+    factory<VersionRepository> { VersionRepositoryImpl(get(),get()) }
 
     /**
      * service
@@ -64,5 +64,6 @@ fun retrofit(baseUrl: String) = module {
     }
     single { get<Retrofit>().create(ApiInterface::class.java) }
     factory { RestConnection(get()) }
+    single { Network() }
 }
 

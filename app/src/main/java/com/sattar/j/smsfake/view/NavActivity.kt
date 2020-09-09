@@ -70,8 +70,12 @@ class NavActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelected
         return true
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+
+    }
     private fun alertAbout(prosecc: Int, title: Int, message: Int, activeBtn: Int, positiveBtn: Int) {
-//
+
         try {
             val dialogSheet = DialogSheet(this, true)
             dialogSheet.setTitle(title)
