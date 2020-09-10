@@ -33,9 +33,13 @@ class SendMessageVM(
     fun getCurrentAppVersion(): MutableLiveData<Version> {
         versionService.getCurrentVersion {
             when (it) {
-                is ServiceResult.Success -> currentAppVersion.value = it.data
+                is ServiceResult.Success ->{
+                    currentAppVersion.value = it.data
+                    versionService.disposeObservable()
+                }
                 is ServiceResult.Error -> it.throwable.toString()
             }
+
         }
         return currentAppVersion
     }

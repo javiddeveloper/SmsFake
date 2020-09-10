@@ -21,9 +21,13 @@ class VersionServiceImpl(
         result(ServiceResult.Loading())
         diposable.add(versionRepository.getCurrentVersion().subscribe({
             result(ServiceResult.Success(it))
+//            diposable.clear()
         }, {
             result(ServiceResult.Error(it))
-        }))
+//            diposable.clear()
+        })
+        )
+
     }
 
     override fun disposeObservable() {

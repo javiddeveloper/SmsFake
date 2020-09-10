@@ -30,9 +30,8 @@ class SendMessageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sendMessageVM.getDestinationList().observe(viewLifecycleOwner, Observer {
-            Utility.persianToast(it.toString()).show()
+//            Utility.persianToast(it.toString()).show()
         })
-
     }
 
     override fun onResume() {
@@ -45,7 +44,6 @@ class SendMessageFragment : Fragment() {
     }
 
     private fun showUpdateDialog(context: Context, version: Version) {
-//        if (mDialog != null) return
         val isForceUpdate = Integer.valueOf(version.isForce) == 1
         mDialog = DialogSheet(context, true)
         mDialog?.setCancelable(!isForceUpdate)
@@ -59,6 +57,7 @@ class SendMessageFragment : Fragment() {
         mDialog?.setRoundedCorners(true)
         mDialog?.setPositiveButton(getString(R.string.update_myket), object : DialogSheet.OnPositiveClickListener {
             override fun onClick(v: View?) {
+                mDialog?.dismiss()
                 Utility.openUrl(version.myketLink)
             }
         })
