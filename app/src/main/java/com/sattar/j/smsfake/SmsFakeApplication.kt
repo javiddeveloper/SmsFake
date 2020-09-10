@@ -2,6 +2,8 @@ package com.sattar.j.smsfake
 
 import android.app.Application
 import android.content.Context
+import android.os.Build
+import android.provider.Telephony
 import androidx.multidex.MultiDex
 import com.sattar.j.smsfake.data.network.api.ApiClient
 import com.sattar.j.smsfake.tools.db
@@ -13,6 +15,7 @@ import org.koin.core.context.startKoin
 
 class SmsFakeApplication : Application() {
     companion object {
+        var lastSmsApp: String? = null
         var appContext: Context? = null
         const val NORMAL_FONT = 0
         const val BOLD_FONT = 1
@@ -35,6 +38,9 @@ class SmsFakeApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         appContext = applicationContext
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            lastSmsApp = Telephony.Sms.getDefaultSmsPackage(applicationContext)
+        }
         startKoin {
             // Android context
             androidContext(this@SmsFakeApplication)

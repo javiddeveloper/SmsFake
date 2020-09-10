@@ -61,7 +61,7 @@
                             android:gravity="center"
                             android:lineSpacingMultiplier="1.3"
                             android:text="@string/danger_message"
-                            android:textColor="@color/text_color"
+                            android:textColor="@color/textColor"
                             app:styleFont="light" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
@@ -146,7 +146,7 @@
                             android:drawableRight="?android:attr/listChoiceIndicatorSingle"
                             android:gravity="right|center_vertical"
                             android:layoutDirection="rtl"
-                            android:textColor="@color/text_color"
+                            android:textColor="@color/textColor"
                             android:text="@string/receive"
                             app:buttonCompat="@null" />
 
@@ -160,7 +160,7 @@
                             android:gravity="right|center_vertical"
                             android:layoutDirection="rtl"
                             android:text="@string/send"
-                            android:textColor="@color/text_color"
+                            android:textColor="@color/textColor"
                             app:buttonCompat="@null" />
 
                     </RadioGroup>
@@ -205,7 +205,7 @@
 
                         <!--                        <com.sattar.j.smsfake.tools.customViews.CustomEditText-->
                         <!--                            android:id="@+id/phone"-->
-                        <!--                            android:textColor="@color/text_color"-->
+                        <!--                            android:textColor="@color/textColor"-->
                         <!--                            android:layout_width="match_parent"-->
                         <!--                            android:layout_height="wrap_content"-->
                         <!--                            android:hint="@string/phoneOrName"-->
@@ -286,7 +286,7 @@
                             android:layout_height="match_parent"
                             android:layout_weight="0.5"
                             android:gravity="center"
-                            android:textColor="@color/text_color"
+                            android:textColor="@color/textColor"
                             android:text="@string/timeSend"
                             app:styleFont="light" />
 
@@ -308,7 +308,7 @@
                             android:layout_weight="0.5"
                             android:gravity="center"
 
-                            android:textColor="@color/text_color"
+                            android:textColor="@color/textColor"
                             android:text="@string/dateSend"
                             app:styleFont="light" />
                     </LinearLayout>
@@ -327,7 +327,7 @@
             android:layout_above="@+id/spaceBottom"
             android:layout_marginStart="16dp"
             android:layout_marginBottom="10dp"
-            android:layout_toStartOf="@id/send"
+            android:layout_toStartOf="@id/fab_send"
             android:clipToPadding="true"
             app:cardCornerRadius="20dp">
 
@@ -341,7 +341,7 @@
                     android:layout_height="wrap_content"
                     android:maxLines="5"
                     android:background="@null"
-                    android:textColor="@color/text_color"
+                    android:textColor="@color/textColor"
                     android:padding="5dp"
                     android:hint="@string/messageText"
                     app:styleFont="light" />
@@ -350,7 +350,7 @@
         </androidx.cardview.widget.CardView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/send"
+            android:id="@+id/fab_send"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/spaceBottom"

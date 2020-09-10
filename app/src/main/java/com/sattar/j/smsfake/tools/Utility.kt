@@ -40,6 +40,7 @@ class Utility {
             intent.data = Uri.parse(url)
             SmsFakeApplication.appContext?.startActivity(intent)
         }
+
         fun appTypeFace(type:Int):Typeface{
             return Typeface.createFromAsset(SmsFakeApplication.appContext?.assets, SmsFakeApplication.getFont(type))
         }

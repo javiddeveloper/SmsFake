@@ -1,7 +1,11 @@
 package com.sattar.j.smsfake.view.navigations.sendMessage
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.provider.Telephony
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,13 +17,25 @@ import com.sattar.j.smsfake.R
 import com.sattar.j.smsfake.SmsFakeApplication
 import com.sattar.j.smsfake.data.entity.Version
 import com.sattar.j.smsfake.databinding.FragmentSendMessageBinding
+import com.sattar.j.smsfake.tools.SmsTools
 import com.sattar.j.smsfake.tools.Utility
 import org.koin.android.ext.android.inject
 
 class SendMessageFragment : Fragment() {
     lateinit var mBinding: FragmentSendMessageBinding
-    private var mDialog : DialogSheet? = null
+    private var checkPermission = false
+    private var mDialog: DialogSheet? = null
     private val sendMessageVM by inject<SendMessageVM>()
+
+
+    override fun onResume() {
+        super.onResume()
+        sendMessageVM.getCurrentAppVersion().observe(viewLifecycleOwner, Observer {
+            if (Integer.valueOf(it.versionName.replace(".", ""))
+                    > Integer.valueOf(Utility.appVersionName().replace(".", "")))
+                context?.let { it1 -> showUpdateDialog(it1, it) }
+        })
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -32,16 +48,46 @@ class SendMessageFragment : Fragment() {
         sendMessageVM.getDestinationList().observe(viewLifecycleOwner, Observer {
 //            Utility.persianToast(it.toString()).show()
         })
+
+        mBinding.fabSend.setOnClickListener {
+            changeDefaultSmsApp()
+//            setDefaultSmsManagement()
+            if (checkPermission)
+                SmsTools.sendSms(true, "09178516035",
+                        "test")
+            context?.let { it1 -> successMessageDialog(it1) }
+        }
+
     }
 
-    override fun onResume() {
-        super.onResume()
-        sendMessageVM.getCurrentAppVersion().observe(viewLifecycleOwner, Observer {
-            if (Integer.valueOf(it.versionName.replace(".", ""))
-                    > Integer.valueOf(Utility.appVersionName().replace(".", "")))
-                context?.let { it1 -> showUpdateDialog(it1, it) }
-        })
+    private fun changeDefaultSmsApp() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && !checkPermission) {
+            val myPackageName = activity?.packageName
+            if (Telephony.Sms.getDefaultSmsPackage(context) != myPackageName) {
+                val intent = Intent(Telephony.Sms.Intents.ACTION_CHANGE_DEFAULT)
+                intent.putExtra(Telephony.Sms.Intents.EXTRA_PACKAGE_NAME, myPackageName)
+                startActivityForResult(intent, 1)
+            } else {
+                checkPermission = true
+            }
+        }
     }
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_CANCELED) {
+            Utility.persianToast("دسترسی لغو شد لطفا مجددا سعی نمایید.").show()
+            return
+        }
+        if (resultCode == Activity.RESULT_OK) {
+            checkPermission = true
+            SmsTools.sendSms(true, "09178516035",
+                    "tes6777777jt")
+            context?.let { it1 -> successMessageDialog(it1) }
+        }
+    }
+
 
     private fun showUpdateDialog(context: Context, version: Version) {
         val isForceUpdate = Integer.valueOf(version.isForce) == 1
@@ -72,4 +118,27 @@ class SendMessageFragment : Fragment() {
         })
         mDialog?.show()
     }
+
+    private fun successMessageDialog(context: Context) {
+        mDialog = DialogSheet(context, true)
+        mDialog?.setCancelable(true)
+        mDialog?.setTitleTypeface(Utility.appTypeFace(SmsFakeApplication.MEDIUM_FONT))
+        mDialog?.setButtonsTypeface(Utility.appTypeFace(SmsFakeApplication.NORMAL_FONT))
+        mDialog?.setMessageTypeface(Utility.appTypeFace(SmsFakeApplication.LIGHT_FONT))
+        mDialog?.setPositiveButtonColorRes(R.color.colorPrimary)
+        mDialog?.setIconDrawable(context.resources.getDrawable(R.drawable.sms_icon))
+        mDialog?.setTitle("عملیات موفق")
+        mDialog?.setMessage("برای مشاهده نتیجه وارد پیامهای خود شوید")
+        mDialog?.setRoundedCorners(true)
+        mDialog?.setPositiveButton("تایید", object : DialogSheet.OnPositiveClickListener {
+            override fun onClick(v: View?) {
+                mDialog?.dismiss()
+                SmsTools.restoreDefaultSmsApp()
+            }
+        })
+        mDialog?.show()
+    }
+
+
 }
+
