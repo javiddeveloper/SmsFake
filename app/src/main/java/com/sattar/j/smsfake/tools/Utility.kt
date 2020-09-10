@@ -25,13 +25,6 @@ class Utility {
             }
         }
 
-        fun appVersionName(): String {
-            return BuildConfig.VERSION_NAME
-        }
-
-        fun appVersionCode(): Int {
-            return BuildConfig.VERSION_CODE
-        }
 
 
         fun openUrl(url: String) {

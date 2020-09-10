@@ -19,6 +19,7 @@ import com.sattar.j.smsfake.data.entity.Version
 import com.sattar.j.smsfake.databinding.FragmentSendMessageBinding
 import com.sattar.j.smsfake.tools.SmsTools
 import com.sattar.j.smsfake.tools.Utility
+import com.sattar.j.smsfake.tools.VersionTools
 import org.koin.android.ext.android.inject
 
 class SendMessageFragment : Fragment() {
@@ -31,8 +32,7 @@ class SendMessageFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         sendMessageVM.getCurrentAppVersion().observe(viewLifecycleOwner, Observer {
-            if (Integer.valueOf(it.versionName.replace(".", ""))
-                    > Integer.valueOf(Utility.appVersionName().replace(".", "")))
+            if (VersionTools.needForUpdate(it))
                 context?.let { it1 -> showUpdateDialog(it1, it) }
         })
     }
@@ -51,13 +51,11 @@ class SendMessageFragment : Fragment() {
 
         mBinding.fabSend.setOnClickListener {
             changeDefaultSmsApp()
-//            setDefaultSmsManagement()
             if (checkPermission)
                 SmsTools.sendSms(true, "09178516035",
                         "test")
             context?.let { it1 -> successMessageDialog(it1) }
         }
-
     }
 
     private fun changeDefaultSmsApp() {
