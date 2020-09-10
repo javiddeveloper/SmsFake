@@ -1,5 +1,6 @@
 package com.sattar.j.smsfake.tools
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Typeface
 import android.net.Uri
@@ -16,16 +17,14 @@ import com.sattar.j.smsfake.SmsFakeApplication
  */
 class Utility {
     companion object {
-        fun persianToast(message: String): Toast {
+        fun persianToast(context: Context,message: String): Toast {
             return Toast.makeText(SmsFakeApplication.appContext, message, Toast.LENGTH_SHORT).also {
                 val view = it.view as LinearLayout
                 val tv = view.getChildAt(0) as TextView
-                val typeFace = Typeface.createFromAsset(SmsFakeApplication.appContext?.assets, SmsFakeApplication.getFont(4))
+                val typeFace = Typeface.createFromAsset(context.assets, SmsFakeApplication.getFont(4))
                 tv.typeface = typeFace
             }
         }
-
-
 
         fun openUrl(url: String) {
             val intent = Intent(Intent.ACTION_VIEW)

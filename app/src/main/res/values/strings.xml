@@ -30,4 +30,8 @@
     <string name="exit_app">خروج</string>
     <string name="cancel">لغو</string>
     <string name="update_version">بروزرسانی نسخه</string>
+    <string name="success_message_send_sms">برای مشاهده نتیجه وارد پیام‌های خود شوید</string>
+    <string name="action_success">عملیات موفق</string>
+    <string name="accept">تایید</string>
+    <string name="access_denaed_permission_message">دسترسی لغو شد لطفا مجددا سعی نمایید.</string>
 </resources>

@@ -3,9 +3,7 @@ package com.sattar.j.smsfake.view.navigations.sendMessage
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import android.provider.Telephony
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,8 +21,7 @@ import com.sattar.j.smsfake.tools.VersionTools
 import org.koin.android.ext.android.inject
 
 class SendMessageFragment : Fragment() {
-    lateinit var mBinding: FragmentSendMessageBinding
-    private var checkPermission = false
+    private lateinit var mBinding: FragmentSendMessageBinding
     private var mDialog: DialogSheet? = null
     private val sendMessageVM by inject<SendMessageVM>()
 
@@ -46,40 +43,27 @@ class SendMessageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sendMessageVM.getDestinationList().observe(viewLifecycleOwner, Observer {
-//            Utility.persianToast(it.toString()).show()
+            context?.let { it1 -> Utility.persianToast(it1,it.toString()).show() }
         })
 
         mBinding.fabSend.setOnClickListener {
-            changeDefaultSmsApp()
-            if (checkPermission)
+            SmsTools.changeDefaultSmsApp(this)
+            if (SmsTools.isSmsAppDefaultChanged) {
                 SmsTools.sendSms(true, "09178516035",
                         "test")
-            context?.let { it1 -> successMessageDialog(it1) }
-        }
-    }
-
-    private fun changeDefaultSmsApp() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && !checkPermission) {
-            val myPackageName = activity?.packageName
-            if (Telephony.Sms.getDefaultSmsPackage(context) != myPackageName) {
-                val intent = Intent(Telephony.Sms.Intents.ACTION_CHANGE_DEFAULT)
-                intent.putExtra(Telephony.Sms.Intents.EXTRA_PACKAGE_NAME, myPackageName)
-                startActivityForResult(intent, 1)
-            } else {
-                checkPermission = true
+                context?.let { it1 -> successMessageDialog(it1) }
             }
         }
     }
 
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_CANCELED) {
-            Utility.persianToast("دسترسی لغو شد لطفا مجددا سعی نمایید.").show()
+            context?.let { Utility.persianToast(it,getString(R.string.access_denaed_permission_message)).show() }
             return
         }
         if (resultCode == Activity.RESULT_OK) {
-            checkPermission = true
+            SmsTools.isSmsAppDefaultChanged = true
             SmsTools.sendSms(true, "09178516035",
                     "tes6777777jt")
             context?.let { it1 -> successMessageDialog(it1) }
@@ -125,10 +109,10 @@ class SendMessageFragment : Fragment() {
         mDialog?.setMessageTypeface(Utility.appTypeFace(SmsFakeApplication.LIGHT_FONT))
         mDialog?.setPositiveButtonColorRes(R.color.colorPrimary)
         mDialog?.setIconDrawable(context.resources.getDrawable(R.drawable.sms_icon))
-        mDialog?.setTitle("عملیات موفق")
-        mDialog?.setMessage("برای مشاهده نتیجه وارد پیامهای خود شوید")
+        mDialog?.setTitle(getString(R.string.action_success))
+        mDialog?.setMessage(getString(R.string.success_message_send_sms))
         mDialog?.setRoundedCorners(true)
-        mDialog?.setPositiveButton("تایید", object : DialogSheet.OnPositiveClickListener {
+        mDialog?.setPositiveButton(getString(R.string.accept), object : DialogSheet.OnPositiveClickListener {
             override fun onClick(v: View?) {
                 mDialog?.dismiss()
                 SmsTools.restoreDefaultSmsApp()

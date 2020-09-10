@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.provider.Telephony
+import androidx.fragment.app.Fragment
 import com.sattar.j.smsfake.SmsFakeApplication
 import java.util.*
 
@@ -15,6 +16,8 @@ import java.util.*
  */
 class SmsTools {
     companion object {
+        const val SMS_CODE_RESULT: Int = 1000
+        var isSmsAppDefaultChanged: Boolean = false
         fun sendSms(isReceive: Boolean = true, phoneNumber: String, message: String, timeMiliSec: Long = Calendar.getInstance().timeInMillis) {
             val contentValues = ContentValues()
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
@@ -48,6 +51,19 @@ class SmsTools {
                 val intent = Intent(Telephony.Sms.Intents.ACTION_CHANGE_DEFAULT)
                 intent.putExtra(Telephony.Sms.Intents.EXTRA_PACKAGE_NAME, SmsFakeApplication.lastSmsApp)
                 SmsFakeApplication.appContext?.startActivity(intent)
+            }
+        }
+
+        fun changeDefaultSmsApp(fragment: Fragment?) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && !isSmsAppDefaultChanged) {
+                val myPackageName = fragment?.activity?.packageName
+                if (Telephony.Sms.getDefaultSmsPackage(fragment?.context) != myPackageName) {
+                    val intent = Intent(Telephony.Sms.Intents.ACTION_CHANGE_DEFAULT)
+                    intent.putExtra(Telephony.Sms.Intents.EXTRA_PACKAGE_NAME, myPackageName)
+                    fragment?.startActivityForResult(intent, SMS_CODE_RESULT)
+                } else {
+                    isSmsAppDefaultChanged = true
+                }
             }
         }
     }
