@@ -6,12 +6,14 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatEditText;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,7 +27,7 @@ import java.util.List;
 /**
  * Developed by javid
  */
-public class CustomDestinationList extends RelativeLayout {
+public class CustomDestinationList extends AppCompatEditText {
     private List<Destination> destinations = new ArrayList<>();
     private Destination destination;
     private LayoutCustomDestinationBinding customDestinationBinding;
@@ -75,7 +77,7 @@ public class CustomDestinationList extends RelativeLayout {
             showDestinationPopup(view.getContext());
         });
         customDestinationBinding.editDestName.setOnFocusChangeListener((view, b) -> showDestinationPopup(view.getContext()));
-        addView(customDestinationBinding.getRoot());
+//        addView(customDestinationBinding.getRoot());
     }
 
 

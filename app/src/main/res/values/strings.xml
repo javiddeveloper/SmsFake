@@ -34,4 +34,6 @@
     <string name="action_success">عملیات موفق</string>
     <string name="accept">تایید</string>
     <string name="access_denaed_permission_message">دسترسی لغو شد لطفا مجددا سعی نمایید.</string>
+    <string name="err_enter_destination">نام یا شماره تلفن را وارد نمایید</string>
+    <string name="err_text_message">متن پیام را وارد کنید</string>
 </resources>
