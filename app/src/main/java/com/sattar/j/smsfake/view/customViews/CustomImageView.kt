@@ -1,4 +1,4 @@
-package com.sattar.j.smsfake.tools.customViews
+package com.sattar.j.smsfake.view.customViews
 
 import android.content.Context
 import android.graphics.drawable.Drawable

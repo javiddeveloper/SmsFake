@@ -32,6 +32,8 @@
     <string name="update_version">بروزرسانی نسخه</string>
     <string name="success_message_send_sms">برای مشاهده نتیجه وارد پیام‌های خود شوید</string>
     <string name="action_success">عملیات موفق</string>
+    <string name="time_send">ساعت ارسال پیام</string>
+    <string name="date_send">تاریخ ارسال پیام</string>
     <string name="accept">تایید</string>
     <string name="access_denaed_permission_message">دسترسی لغو شد لطفا مجددا سعی نمایید.</string>
     <string name="err_enter_destination">نام یا شماره تلفن را وارد نمایید</string>

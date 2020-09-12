@@ -4,11 +4,16 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.DatePicker
+import android.widget.TimePicker
 import androidx.core.content.ContextCompat.getColor
 import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
@@ -51,7 +56,6 @@ class SendMessageFragment : Fragment() {
         sendMessageVM.getDestinationList().observe(viewLifecycleOwner, Observer {
             context?.let { it1 -> Utility.persianToast(it1, it.toString()).show() }
         })
-        mBinding.radioReceive.isChecked = true
 
         mBinding.fabSend.setOnClickListener {
             SmsTools.changeDefaultSmsApp(this)
@@ -66,6 +70,7 @@ class SendMessageFragment : Fragment() {
                 }
             }
         }
+
         mBinding.editMessage.addTextChangedListener {
             object : TextWatcher {
                 override fun afterTextChanged(p0: Editable?) {
@@ -84,6 +89,31 @@ class SendMessageFragment : Fragment() {
                     mBinding.editMessage.setHintTextColor(getColor(context!!, R.color.hintColor))
                 }
             }
+        }
+
+//        mBinding.txtTime.clicks().buffer(600, TimeUnit.MILLISECONDS, 2).filter {
+//            Log.d( "onViewCreated: ",it.size.toString())
+//            it.size >= 2
+//        }.observeOn(AndroidSchedulers.mainThread())
+//                .subscribe {
+//                    context?.let { it1 -> Utility.persianToast(it1, "fdjkdlfghdkj").show() }
+//                }
+        var doubleTap = false
+        mBinding.txtTime.setOnClickListener {
+            if (doubleTap)
+                timeDialog(it.context)
+            doubleTap = true
+            Handler(Looper.getMainLooper()).postDelayed({
+                doubleTap = false
+            }, 1500)
+        }
+        mBinding.txtDate.setOnClickListener {
+            if (doubleTap)
+                dateDialog(it.context)
+            doubleTap = true
+            Handler(Looper.getMainLooper()).postDelayed({
+                doubleTap = false
+            }, 1500)
         }
     }
 
@@ -162,6 +192,63 @@ class SendMessageFragment : Fragment() {
                 SmsTools.restoreDefaultSmsApp()
             }
         })
+        mDialog?.show()
+    }
+
+    private fun timeDialog(context: Context) {
+        val view = LayoutInflater.from(context).inflate(R.layout.time_picker, null, false)
+        val timePicker: TimePicker = view.findViewById(R.id.timePicker)
+        timePicker.setIs24HourView(true)
+        timePicker.setOnTimeChangedListener(object : TimePicker.OnTimeChangedListener {
+            override fun onTimeChanged(p0: TimePicker?, p1: Int, p2: Int) {
+                smsAction.time = "$p1:$p2"
+            }
+        })
+        mDialog = DialogSheet(context, true)
+        mDialog?.setCancelable(true)
+        mDialog?.setTitleTypeface(Utility.appTypeFace(SmsFakeApplication.MEDIUM_FONT))
+        mDialog?.setButtonsTypeface(Utility.appTypeFace(SmsFakeApplication.NORMAL_FONT))
+        mDialog?.setMessageTypeface(Utility.appTypeFace(SmsFakeApplication.LIGHT_FONT))
+        mDialog?.setPositiveButtonColorRes(R.color.colorPrimary)
+        mDialog?.setIconDrawable(context.resources.getDrawable(R.drawable.sms_icon))
+        mDialog?.setTitle(getString(R.string.time_send))
+        mDialog?.setView(view)
+        mDialog?.setRoundedCorners(true)
+        mDialog?.setPositiveButton(getString(R.string.accept), object : DialogSheet.OnPositiveClickListener {
+            override fun onClick(v: View?) {
+                mDialog?.dismiss()
+                mBinding.txtTime.text = smsAction.time
+//                sendMessageVM.setSmsAction(smsAction)
+//                mBinding.vm = sendMessageVM
+            }
+        })
+        mDialog?.show()
+    }
+    private fun dateDialog(context: Context) {
+
+        mDialog = DialogSheet(context, true)
+        mDialog?.setCancelable(true)
+        mDialog?.setTitleTypeface(Utility.appTypeFace(SmsFakeApplication.MEDIUM_FONT))
+        mDialog?.setButtonsTypeface(Utility.appTypeFace(SmsFakeApplication.NORMAL_FONT))
+        mDialog?.setMessageTypeface(Utility.appTypeFace(SmsFakeApplication.LIGHT_FONT))
+        mDialog?.setPositiveButtonColorRes(R.color.colorPrimary)
+        mDialog?.setIconDrawable(context.resources.getDrawable(R.drawable.sms_icon))
+        mDialog?.setTitle(getString(R.string.date_send))
+
+        mDialog?.setRoundedCorners(true)
+        mDialog?.setPositiveButton(getString(R.string.accept), object : DialogSheet.OnPositiveClickListener {
+            override fun onClick(v: View?) {
+                mDialog?.dismiss()
+            }
+        })
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            val view = LayoutInflater.from(context).inflate(R.layout.date_picker, null, false)
+            val calendarView: DatePicker = view.findViewById(R.id.datePicker)
+            calendarView.setOnDateChangedListener { _, i, i2, i3 ->
+                Log.d( "dateDialog: ","$i $i2 $i3")
+            }
+            mDialog?.setView(view)
+        }
         mDialog?.show()
     }
 

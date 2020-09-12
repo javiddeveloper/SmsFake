@@ -13,7 +13,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <com.sattar.j.smsfake.tools.customViews.CustomImageView
+            <com.sattar.j.smsfake.view.customViews.CustomImageView
             android:id="@+id/imageView_arrowDown"
             android:layout_width="45dp"
             android:layout_height="45dp"
@@ -21,7 +21,7 @@
             android:padding="5dp"
             app:srcCompat="@drawable/ic_menu_down" />
 
-        <com.sattar.j.smsfake.tools.customViews.CustomImageView
+        <com.sattar.j.smsfake.view.customViews.CustomImageView
             android:id="@+id/imageView_logo"
             android:layout_width="45dp"
             android:layout_height="45dp"
@@ -31,7 +31,7 @@
             app:srcCompat="@drawable/ic_account"
             app:tint="@color/iconColor" />
 
-        <com.sattar.j.smsfake.tools.customViews.CustomEditText
+        <com.sattar.j.smsfake.view.customViews.CustomEditText
             android:id="@+id/edit_destName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

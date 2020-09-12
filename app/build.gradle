@@ -92,6 +92,7 @@ dependencies {
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
     implementation 'io.reactivex.rxjava3:rxjava:3.0.6'
     implementation "com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0"
+    implementation 'com.jakewharton.rxbinding4:rxbinding-core:4.0.0'
 
     //** Retrofit && Retrofit-adapter && Gson
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
@@ -124,4 +125,6 @@ dependencies {
 
     //** Persian Date(Jalali)
     implementation 'com.github.samanzamani.persiandate:PersianDate:0.8'
+
+
 }

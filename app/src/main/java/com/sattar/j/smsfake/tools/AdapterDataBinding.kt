@@ -4,7 +4,7 @@ import android.os.Build
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.sattar.j.smsfake.tools.customViews.CustomImageView
+import com.sattar.j.smsfake.view.customViews.CustomImageView
 
 /**
  * @author  : javid

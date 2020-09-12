@@ -10,8 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.sattar.j.smsfake.R;
 import com.sattar.j.smsfake.data.entity.Destination;
-import com.sattar.j.smsfake.tools.customViews.CustomImageView;
-import com.sattar.j.smsfake.tools.customViews.CustomTextView;
+import com.sattar.j.smsfake.view.customViews.CustomImageView;
+import com.sattar.j.smsfake.view.customViews.CustomTextView;
 
 import java.util.List;
 

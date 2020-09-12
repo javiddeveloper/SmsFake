@@ -1,14 +1,15 @@
-package com.sattar.j.smsfake.tools.customViews
+package com.sattar.j.smsfake.view.customViews
 
 import android.content.Context
 import android.content.res.TypedArray
+import android.graphics.Rect
 import android.graphics.Typeface
 import android.util.AttributeSet
-import androidx.appcompat.widget.AppCompatTextView
+import androidx.appcompat.widget.AppCompatAutoCompleteTextView
 import com.sattar.j.smsfake.R
 import com.sattar.j.smsfake.SmsFakeApplication.Companion.getFont
 
-class CustomTextView : AppCompatTextView {
+class CustomAutoCompleteTextView : AppCompatAutoCompleteTextView {
     private var textViewCustomFont: TypedArray? = null
     private var styleFont = 0
 
@@ -29,5 +30,16 @@ class CustomTextView : AppCompatTextView {
         styleFont = textViewCustomFont!!.getInt(R.styleable.CustomFont_styleFont, 0)
         val typeface = Typeface.createFromAsset(context.assets, getFont(styleFont))
         setTypeface(typeface)
+    }
+    override fun enoughToFilter(): Boolean {
+        return true
+    }
+
+    override fun onFocusChanged(focused: Boolean, direction: Int,
+                                 previouslyFocusedRect: Rect?) {
+        super.onFocusChanged(focused, direction, previouslyFocusedRect)
+        if (focused && filter != null) {
+            performFiltering(text, 0)
+        }
     }
 }

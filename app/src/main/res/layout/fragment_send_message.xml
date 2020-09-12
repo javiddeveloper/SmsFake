@@ -23,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.sattar.j.smsfake.tools.customViews.CustomTextView
+                <com.sattar.j.smsfake.view.customViews.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -56,7 +56,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <com.sattar.j.smsfake.tools.customViews.CustomEditText
+                        <com.sattar.j.smsfake.view.customViews.CustomEditText
                             android:id="@+id/edit_destination"
                             android:layout_margin="16sp"
                             android:layout_width="match_parent"
@@ -98,7 +98,7 @@
                                 app:srcCompat="@drawable/ic_calendar_clock"
                                 app:tint="@color/titleCatColor" />
 
-                            <com.sattar.j.smsfake.tools.customViews.CustomTextView
+                            <com.sattar.j.smsfake.view.customViews.CustomTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="12sp"
@@ -122,8 +122,8 @@
                             android:orientation="horizontal"
                             android:weightSum="2">
 
-                            <com.sattar.j.smsfake.tools.customViews.CustomTextView
-                                android:id="@+id/timeTxt"
+                            <com.sattar.j.smsfake.view.customViews.CustomTextView
+                                android:id="@+id/txtTime"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
@@ -135,8 +135,8 @@
                                 app:styleFont="light" />
 
 
-                            <com.sattar.j.smsfake.tools.customViews.CustomTextView
-                                android:id="@+id/dateTxt"
+                            <com.sattar.j.smsfake.view.customViews.CustomTextView
+                                android:id="@+id/txtDate"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="1"
@@ -148,7 +148,7 @@
                                 app:styleFont="light" />
 
                         </LinearLayout>
-                        <com.sattar.j.smsfake.tools.customViews.CustomTextView
+                        <com.sattar.j.smsfake.view.customViews.CustomTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/message_help_enter_date"
@@ -189,7 +189,7 @@
                                 app:srcCompat="@drawable/ic_send"
                                 app:tint="@color/titleCatColor" />
 
-                            <com.sattar.j.smsfake.tools.customViews.CustomTextView
+                            <com.sattar.j.smsfake.view.customViews.CustomTextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginEnd="12sp"
@@ -232,7 +232,7 @@
                         android:orientation="horizontal"
                         android:weightSum="2">
 
-                        <com.sattar.j.smsfake.tools.customViews.CustomRadioButton
+                        <com.sattar.j.smsfake.view.customViews.CustomRadioButton
                             android:id="@+id/radio_send"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -245,7 +245,7 @@
                             android:text="@string/send"
                             app:buttonCompat="@null" />
 
-                        <com.sattar.j.smsfake.tools.customViews.CustomRadioButton
+                        <com.sattar.j.smsfake.view.customViews.CustomRadioButton
                             android:id="@+id/radio_receive"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
@@ -324,7 +324,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <com.sattar.j.smsfake.tools.customViews.CustomEditText
+                <com.sattar.j.smsfake.view.customViews.CustomEditText
                     android:id="@+id/edit_message"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

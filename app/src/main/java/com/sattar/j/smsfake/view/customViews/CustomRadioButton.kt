@@ -1,14 +1,16 @@
-package com.sattar.j.smsfake.tools.customViews
+package com.sattar.j.smsfake.view.customViews
 
 import android.content.Context
 import android.content.res.TypedArray
 import android.graphics.Typeface
 import android.util.AttributeSet
-import com.google.android.material.textfield.TextInputEditText
+import android.widget.RadioButton
+import androidx.appcompat.widget.AppCompatRadioButton
+import androidx.appcompat.widget.AppCompatTextView
 import com.sattar.j.smsfake.R
 import com.sattar.j.smsfake.SmsFakeApplication.Companion.getFont
 
-class CustomEditText : TextInputEditText {
+class CustomRadioButton : AppCompatRadioButton {
     private var textViewCustomFont: TypedArray? = null
     private var styleFont = 0
 
@@ -20,14 +22,14 @@ class CustomEditText : TextInputEditText {
         initFont(attrs)
     }
 
+    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(context!!, attrs, defStyleAttr) {
+        initFont(attrs)
+    }
+
     private fun initFont(attrs: AttributeSet?) {
         textViewCustomFont = context.obtainStyledAttributes(attrs, R.styleable.CustomFont)
         styleFont = textViewCustomFont!!.getInt(R.styleable.CustomFont_styleFont, 0)
         val typeface = Typeface.createFromAsset(context.assets, getFont(styleFont))
         setTypeface(typeface)
-    }
-
-    fun showBalloon(message:String){
-
     }
 }

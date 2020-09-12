@@ -6,7 +6,7 @@
     android:layoutDirection="rtl"
     android:minHeight="?android:attr/listPreferredItemHeightSmall">
 
-    <com.sattar.j.smsfake.tools.customViews.CustomImageView
+    <com.sattar.j.smsfake.view.customViews.CustomImageView
         android:id="@+id/img_avatar"
         android:layout_width="40dp"
         android:layout_height="40dp"
@@ -18,7 +18,7 @@
         app:srcCompat="@drawable/ic_account"
         app:tint="@color/iconColor" />
 
-    <com.sattar.j.smsfake.tools.customViews.CustomTextView
+    <com.sattar.j.smsfake.view.customViews.CustomTextView
         android:id="@+id/txt_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,7 +29,7 @@
         android:textColor="@color/textColor"
         app:styleFont="medium" />
 
-    <com.sattar.j.smsfake.tools.customViews.CustomTextView
+    <com.sattar.j.smsfake.view.customViews.CustomTextView
         android:id="@+id/txt_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

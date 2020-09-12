@@ -16,5 +16,6 @@ class DateTools {
         fun getCurrentDate():String =  SimpleDateFormat("yyyy/MM/dd").format(Calendar.getInstance().time)
 
         fun getPersianCurrentDate():String =   PersianDateFormat("j/F/Y").format(PersianDate())
+        fun getPersianConvertDate(date : String):String =   PersianDateFormat("j/F/Y").parse(date).toString()
     }
 }
