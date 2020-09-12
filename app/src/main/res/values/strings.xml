@@ -5,7 +5,7 @@
     <string name="dateSend">تاریخ :</string>
     <string name="time">time</string>
     <string name="date">Date</string>
-    <string name="action_send">عملیات ارسال</string>
+    <string name="action_send">نوع ارسال</string>
     <string name="schedule">زمانبندی ارسال</string>
     <string name="gmail">JavidDeveloper@Gmail.com</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -36,4 +36,5 @@
     <string name="access_denaed_permission_message">دسترسی لغو شد لطفا مجددا سعی نمایید.</string>
     <string name="err_enter_destination">نام یا شماره تلفن را وارد نمایید</string>
     <string name="err_text_message">متن پیام را وارد کنید</string>
+    <string name="message_help_enter_date">برای ورود تاریخ و ساعت روی هر آیتم دو بار کلیک کنید</string>
 </resources>

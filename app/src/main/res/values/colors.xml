@@ -8,6 +8,8 @@
     <color name="cardBackground">#FFFFFF</color>
     <color name="titleCatColor">#8A535353</color>
     <color name="hintColor">#8A535353</color>
+    <color name="backgroundRadius">#EFEFEF</color>
+    <color name="strokeRadius">#CFCECE</color>
     <color name="textColor">#1E1E1E</color>
     <color name="timeColor">#cf0505</color>
     <color name="errColor">#830000</color>

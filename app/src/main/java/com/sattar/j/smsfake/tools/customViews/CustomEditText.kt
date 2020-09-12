@@ -26,4 +26,8 @@ class CustomEditText : TextInputEditText {
         val typeface = Typeface.createFromAsset(context.assets, getFont(styleFont))
         setTypeface(typeface)
     }
+
+    fun showBalloon(message:String){
+
+    }
 }

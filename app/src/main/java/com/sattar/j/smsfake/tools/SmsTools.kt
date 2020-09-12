@@ -1,21 +1,14 @@
 package com.sattar.j.smsfake.tools
 
-import android.app.PendingIntent
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
-import android.os.IBinder
 import android.provider.Telephony
-import android.telephony.SubscriptionManager
-import android.telephony.TelephonyManager
-import android.util.Log
 import androidx.fragment.app.Fragment
 import com.sattar.j.smsfake.SmsFakeApplication
 import com.sattar.j.smsfake.data.entity.SmsAction
-import java.lang.reflect.Method
-import java.util.*
 
 
 /**
@@ -29,23 +22,23 @@ class SmsTools {
         var isSmsAppDefaultChanged: Boolean = false
         fun sendSms(smsAction: SmsAction) {
             val contentValues = ContentValues()
+            SmsFakeApplication.appContext?.getSystemService(Context.TELEPHONY_SERVICE)
+            contentValues.put(Telephony.Sms.ADDRESS, smsAction.phoneNumber)
+            contentValues.put(Telephony.Sms.DATE, smsAction.time)
+            contentValues.put(Telephony.Sms.BODY, smsAction.message)
+            contentValues.put(Telephony.Sms.TYPE, smsAction.messageType)
+            contentValues.put(Telephony.Sms.READ, 0)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                SmsFakeApplication.appContext?.getSystemService(Context.TELEPHONY_SERVICE)
-                contentValues.put(Telephony.Sms.ADDRESS, smsAction.phoneNumber)
-                contentValues.put(Telephony.Sms.DATE, smsAction.timeMiliSec)
-                contentValues.put(Telephony.Sms.BODY, smsAction.message)
-//                contentValues.put("value", "1")
-                contentValues.put(Telephony.Sms.READ, 0)
                 if (smsAction.isReceive)
                     SmsFakeApplication.appContext?.contentResolver?.insert(Telephony.Sms.Inbox.CONTENT_URI, contentValues)
                 else
                     SmsFakeApplication.appContext?.contentResolver?.insert(Telephony.Sms.Sent.CONTENT_URI, contentValues)
             } else {
-                contentValues.put(Telephony.Sms.ADDRESS, smsAction.phoneNumber)
-                contentValues.put(Telephony.Sms.DATE, smsAction.timeMiliSec)
-                contentValues.put(Telephony.Sms.BODY, smsAction.message)
-//                contentValues.put("value", "1")
-                contentValues.put(Telephony.Sms.READ, 0)
+//                contentValues.put(Telephony.Sms.ADDRESS, smsAction.phoneNumber)
+//                contentValues.put(Telephony.Sms.DATE, smsAction.timeMiliSec)
+//                contentValues.put(Telephony.Sms.BODY, smsAction.message)
+//                contentValues.put(Telephony.Sms.TYPE, smsAction.messageType)
+//                contentValues.put(Telephony.Sms.READ, 0)
                 if (smsAction.isReceive)
                     SmsFakeApplication.appContext?.contentResolver?.insert(Uri.parse("content:  sms_icon/inbox"), contentValues)
                 else

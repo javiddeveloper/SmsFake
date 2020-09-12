@@ -3,10 +3,14 @@ package com.sattar.j.smsfake.view.navigations.sendMessage
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.sattar.j.smsfake.data.entity.Destination
+import com.sattar.j.smsfake.data.entity.SmsAction
 import com.sattar.j.smsfake.data.entity.Version
 import com.sattar.j.smsfake.data.repository.version.VersionService
 import com.sattar.j.smsfake.data.service.MessageService
 import com.sattar.j.smsfake.data.service.ServiceResult
+import com.sattar.j.smsfake.tools.DateTools
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * @author : SendMessageVM
@@ -19,6 +23,14 @@ class SendMessageVM(
 ) : ViewModel() {
     private var destinationList = MutableLiveData<List<Destination>>()
     private var currentAppVersion = MutableLiveData<Version>()
+    var smsAction = MutableLiveData<SmsAction>()
+
+    init {
+        val smsAction = SmsAction()
+        smsAction.time = DateTools.getCurrentTime()
+        smsAction.date = DateTools.getPersianCurrentDate()
+        this.smsAction.value = smsAction
+    }
 
     fun getDestinationList(): MutableLiveData<List<Destination>> {
         messageService.getAllMessage {
@@ -39,7 +51,6 @@ class SendMessageVM(
                 }
                 is ServiceResult.Error -> it.throwable.toString()
             }
-
         }
         return currentAppVersion
     }

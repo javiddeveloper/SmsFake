@@ -42,6 +42,7 @@ class SendMessageFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_send_message, container, false)
+        mBinding.vm = sendMessageVM
         return mBinding.root
     }
 
