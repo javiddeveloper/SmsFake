@@ -31,7 +31,7 @@ class SendMessageVM(
 //    }
 
     fun setSmsAction(smsAction: SmsAction) {
-        this.smsAction.value = smsAction
+        this.smsAction.postValue(smsAction)
     }
 
     fun getDestinationList(): MutableLiveData<List<Destination>> {

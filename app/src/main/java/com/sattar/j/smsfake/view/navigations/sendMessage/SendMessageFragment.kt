@@ -217,8 +217,8 @@ class SendMessageFragment : Fragment() {
         mDialog?.setPositiveButton(getString(R.string.accept), object : DialogSheet.OnPositiveClickListener {
             override fun onClick(v: View?) {
                 mDialog?.dismiss()
-                mBinding.txtTime.text = smsAction.time
-//                sendMessageVM.setSmsAction(smsAction)
+//                mBinding.txtTime.text = smsAction.time
+                sendMessageVM.setSmsAction(smsAction)
 //                mBinding.vm = sendMessageVM
             }
         })

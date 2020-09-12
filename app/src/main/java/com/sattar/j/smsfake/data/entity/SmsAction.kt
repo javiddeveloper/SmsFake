@@ -14,14 +14,14 @@ data class SmsAction (
         var phoneNumber: String? = null,
         var message: String? = null,
         var messageType: Int = MESSAGE_TYPE_ALL,
-//        @Bindable var time: String? = null,
+        @Bindable var time: String? = null,
         var date: String? = null
 ): BaseObservable() {
-    var time: String? = null
-    @Bindable get set(value){
-        field =value
-        notifyPropertyChanged(BR.time)
-    }
+//    var time: String? = null
+//    @Bindable get set(value){
+//        field =value
+//        notifyPropertyChanged(BR.time)
+//    }
     companion object {
         const val MESSAGE_TYPE_ALL = 0
         const val MESSAGE_TYPE_INBOX = 1
