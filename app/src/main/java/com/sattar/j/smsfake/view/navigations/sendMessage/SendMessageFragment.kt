@@ -29,11 +29,12 @@ import com.sattar.j.smsfake.tools.SmsTools
 import com.sattar.j.smsfake.tools.Utility
 import com.sattar.j.smsfake.tools.VersionTools
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SendMessageFragment : Fragment() {
     private lateinit var mBinding: FragmentSendMessageBinding
     private var mDialog: DialogSheet? = null
-    private val sendMessageVM by inject<SendMessageVM>()
+    private val sendMessageVM by viewModel<SendMessageVM>()
     private val smsAction = SmsAction()
 
     override fun onResume() {
@@ -50,7 +51,7 @@ class SendMessageFragment : Fragment() {
         smsAction.time = DateTools.getCurrentTime()
         smsAction.date = DateTools.getCurrentDate()
         smsAction.dateView = DateTools.getPersianCurrentDate()
-        mBinding.lifecycleOwner = this
+//        mBinding.lifecycleOwner = this
         mBinding.vm = sendMessageVM
         return mBinding.root
     }
