@@ -26,12 +26,13 @@ class SendMessageVM(
 //    init {
 //        val smsAction = SmsAction()
 //        smsAction.time = DateTools.getCurrentTime()
-//        smsAction.date = DateTools.getPersianCurrentDate()
+//        smsAction.date = DateTools.getCurrentDate()
+//        smsAction.dateView = DateTools.getPersianCurrentDate()
 //        this.smsAction.value = smsAction
 //    }
 
     fun setSmsAction(smsAction: SmsAction) {
-        this.smsAction.postValue(smsAction)
+        this.smsAction.value = smsAction
     }
 
     fun getDestinationList(): MutableLiveData<List<Destination>> {

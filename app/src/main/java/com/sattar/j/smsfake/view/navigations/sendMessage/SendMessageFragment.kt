@@ -8,7 +8,6 @@ import android.os.Handler
 import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,6 +24,7 @@ import com.sattar.j.smsfake.SmsFakeApplication
 import com.sattar.j.smsfake.data.entity.SmsAction
 import com.sattar.j.smsfake.data.entity.Version
 import com.sattar.j.smsfake.databinding.FragmentSendMessageBinding
+import com.sattar.j.smsfake.tools.DateTools
 import com.sattar.j.smsfake.tools.SmsTools
 import com.sattar.j.smsfake.tools.Utility
 import com.sattar.j.smsfake.tools.VersionTools
@@ -47,6 +47,10 @@ class SendMessageFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_send_message, container, false)
+        smsAction.time = DateTools.getCurrentTime()
+        smsAction.date = DateTools.getCurrentDate()
+        smsAction.dateView = DateTools.getPersianCurrentDate()
+        mBinding.lifecycleOwner = this
         mBinding.vm = sendMessageVM
         return mBinding.root
     }
@@ -140,8 +144,14 @@ class SendMessageFragment : Fragment() {
         }
         if (resultCode == Activity.RESULT_OK) {
             SmsTools.isSmsAppDefaultChanged = true
-            SmsTools.sendSms(smsAction)
-            context?.let { it1 -> successMessageDialog(it1) }
+            if (validationForm()) {
+                smsAction.isReceive = mBinding.radioReceive.isChecked
+                smsAction.isReceive = mBinding.radioReceive.isActivated
+                smsAction.phoneNumber = mBinding.editDestination.text.toString()
+                smsAction.message = mBinding.editMessage.text.toString()
+                SmsTools.sendSms(smsAction)
+                context?.let { it1 -> successMessageDialog(it1) }
+            }
         }
     }
 
@@ -224,9 +234,12 @@ class SendMessageFragment : Fragment() {
         })
         mDialog?.show()
     }
-    private fun dateDialog(context: Context) {
 
+    private fun dateDialog(context: Context) {
+        val view = LayoutInflater.from(context).inflate(R.layout.date_picker, null, false)
+        val calendarView: DatePicker = view.findViewById(R.id.datePicker)
         mDialog = DialogSheet(context, true)
+        mDialog?.setView(view)
         mDialog?.setCancelable(true)
         mDialog?.setTitleTypeface(Utility.appTypeFace(SmsFakeApplication.MEDIUM_FONT))
         mDialog?.setButtonsTypeface(Utility.appTypeFace(SmsFakeApplication.NORMAL_FONT))
@@ -238,17 +251,17 @@ class SendMessageFragment : Fragment() {
         mDialog?.setRoundedCorners(true)
         mDialog?.setPositiveButton(getString(R.string.accept), object : DialogSheet.OnPositiveClickListener {
             override fun onClick(v: View?) {
+                val year: Int = calendarView.year
+                val month: Int = calendarView.month
+                val day: Int = calendarView.dayOfMonth
+                smsAction.date = "$year/$month/$day"
+                smsAction.dateView = DateTools.getPersianConvertDateForView(year,month,day)
+                sendMessageVM.setSmsAction(smsAction)
+//                sendMessageVM.smsAction.value?.isReceive=true
                 mDialog?.dismiss()
             }
         })
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            val view = LayoutInflater.from(context).inflate(R.layout.date_picker, null, false)
-            val calendarView: DatePicker = view.findViewById(R.id.datePicker)
-            calendarView.setOnDateChangedListener { _, i, i2, i3 ->
-                Log.d( "dateDialog: ","$i $i2 $i3")
-            }
-            mDialog?.setView(view)
-        }
+
         mDialog?.show()
     }
 

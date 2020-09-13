@@ -129,7 +129,7 @@
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:background="@drawable/background_radius"
-                                android:text="@{vm.smsAction.time}"
+                                android:text="@={vm.smsAction.time}"
                                 android:textColor="@color/textColor"
                                 android:textSize="19sp"
                                 app:styleFont="light" />
@@ -142,7 +142,7 @@
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:background="@drawable/background_radius"
-                                android:text="@{vm.smsAction.date}"
+                                android:text="@={vm.smsAction.dateView}"
                                 android:textColor="@color/textColor"
                                 android:textSize="19sp"
                                 app:styleFont="light" />
